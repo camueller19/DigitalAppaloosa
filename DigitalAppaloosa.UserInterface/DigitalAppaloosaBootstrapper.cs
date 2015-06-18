@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using DigitalAppaloosa.Modules.Experimental;
 
 namespace DigitalAppaloosa.UserInterface
 {
@@ -28,6 +29,18 @@ namespace DigitalAppaloosa.UserInterface
         protected override void ConfigureModuleCatalog()
         {
             base.ConfigureModuleCatalog();
+        }
+
+        protected override void ConfigureContainer()
+        {
+            //base.ConfigureContainer();
+            var experimentalModule = typeof(ExperimentalModule);
+            ModuleCatalog.AddModule(
+                new ModuleInfo()
+                {
+                    ModuleName = experimentalModule.Name,
+                    ModuleType = experimentalModule.AssemblyQualifiedName,
+                });
         }
     }
 }

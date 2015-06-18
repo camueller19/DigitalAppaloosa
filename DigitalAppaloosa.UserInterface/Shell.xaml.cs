@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Ribbon;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -17,7 +18,7 @@ namespace DigitalAppaloosa.UserInterface
     /// <summary>
     /// Interaktionslogik für Shell.xaml
     /// </summary>
-    public partial class Shell : Window
+    public partial class Shell : RibbonWindow
     {
         public Shell()
         {

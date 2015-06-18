@@ -93,6 +93,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Controls.Ribbon" />
     <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\MvvmLightLibs.5.1.1.0\lib\net45\System.Windows.Interactivity.dll</HintPath>
       <Private>True</Private>
@@ -158,6 +159,16 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalAppaloosa.Interfaces\DigitalAppaloosa.Interfaces.csproj">
+      <Project>{d5b2fab2-0532-4d7e-9b55-05dd11d9fe9b}</Project>
+      <Name>DigitalAppaloosa.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Modules\DigitalAppaloosa.Modules.Experimental\DigitalAppaloosa.Modules.Experimental.csproj">
+      <Project>{f2467528-e68c-4c68-884c-16b06e0785f2}</Project>
+      <Name>DigitalAppaloosa.Modules.Experimental</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
