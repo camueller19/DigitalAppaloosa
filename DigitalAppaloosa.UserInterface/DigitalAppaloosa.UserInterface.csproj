@@ -165,6 +165,10 @@
       <Project>{d5b2fab2-0532-4d7e-9b55-05dd11d9fe9b}</Project>
       <Name>DigitalAppaloosa.Interfaces</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DigitalAppaloosa.Shared\DigitalAppaloosa.Shared.csproj">
+      <Project>{a674f183-292a-4971-8ead-0c84e43be451}</Project>
+      <Name>DigitalAppaloosa.Shared</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\DigitalAppaloosa.Modules.Experimental\DigitalAppaloosa.Modules.Experimental.csproj">
       <Project>{f2467528-e68c-4c68-884c-16b06e0785f2}</Project>
       <Name>DigitalAppaloosa.Modules.Experimental</Name>

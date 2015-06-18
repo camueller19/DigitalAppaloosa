@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using DigitalAppaloosa.Modules.Experimental;
+using Microsoft.Practices.Prism.Regions;
+using System.Windows.Controls.Ribbon;
+using DigitalAppaloosa.Shared.Prism;
 
 namespace DigitalAppaloosa.UserInterface
 {
@@ -41,6 +44,17 @@ namespace DigitalAppaloosa.UserInterface
                     ModuleName = experimentalModule.Name,
                     ModuleType = experimentalModule.AssemblyQualifiedName,
                 });
+        }
+
+        protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
+        {
+            var regionAdapterMappings = Container.TryResolve<RegionAdapterMappings>();
+            if (regionAdapterMappings != null)
+            {
+                regionAdapterMappings.RegisterMapping(typeof(Ribbon), this.Container.Resolve<RibbonRegionAdapter>());
+            }
+
+            return base.ConfigureRegionAdapterMappings();
         }
     }
 }

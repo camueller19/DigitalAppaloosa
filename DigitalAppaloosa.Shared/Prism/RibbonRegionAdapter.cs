@@ -1,17 +1,15 @@
 ﻿using Microsoft.Practices.Prism.Regions;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls.Ribbon;
 using System.Collections.Specialized;
+using System.Windows;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
-   public class RibbonRegionAdapter : RegionAdapterBase<Ribbon>
+    public class RibbonRegionAdapter : RegionAdapterBase<Ribbon>
     {
-        public RibbonRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory) : base(regionBehaviorFactory) { }
+        public RibbonRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory) 
+            : base(regionBehaviorFactory) { }
 
         private Ribbon ribbonRegionTarget;
 
@@ -118,7 +116,7 @@ namespace DigitalAppaloosa.Shared.Prism
                                         if (ribbonView is RibbonButton)
                                 {
                                     // doesn't work - strange!
-                                    ((RibbonButton)ribbonView).Visibility = System.Windows.Visibility.Hidden;
+                                    ((RibbonButton)ribbonView).Visibility = Visibility.Hidden;
                                     // doesn't work - strange!
 
                                     ribbonRegionTarget.Items.Remove(ribbonView);
