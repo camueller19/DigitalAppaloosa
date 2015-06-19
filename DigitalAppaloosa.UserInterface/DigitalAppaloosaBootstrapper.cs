@@ -32,11 +32,7 @@ namespace DigitalAppaloosa.UserInterface
         protected override void ConfigureModuleCatalog()
         {
             base.ConfigureModuleCatalog();
-        }
 
-        protected override void ConfigureContainer()
-        {
-            //base.ConfigureContainer();
             var experimentalModule = typeof(ExperimentalModule);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
@@ -44,7 +40,7 @@ namespace DigitalAppaloosa.UserInterface
                     ModuleName = experimentalModule.Name,
                     ModuleType = experimentalModule.AssemblyQualifiedName,
                 });
-        }
+        }        
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
@@ -56,5 +52,11 @@ namespace DigitalAppaloosa.UserInterface
 
             return base.ConfigureRegionAdapterMappings();
         }
+
     }
 }
+
+//protected override void ConfigureContainer()
+//{
+//    base.ConfigureContainer();
+//}
