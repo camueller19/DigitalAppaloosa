@@ -1,21 +1,21 @@
 ﻿using Microsoft.Practices.Prism.UnityExtensions;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Unity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using DigitalAppaloosa.Modules.Experimental;
 using Microsoft.Practices.Prism.Regions;
 using System.Windows.Controls.Ribbon;
 using DigitalAppaloosa.Shared.Prism;
+using Microsoft.Practices.Prism.Logging;
+using DigitalAppaloosa.Shared.Logging;
+using NLog;
 
 namespace DigitalAppaloosa.UserInterface
 {
     public class DigitalAppaloosaBootstrapper : UnityBootstrapper
     {
+        private static Logger logger = LogManager.GetCurrentClassLogger();
+
         protected override DependencyObject CreateShell()
         {
             return Container.Resolve<Shell>();
@@ -25,7 +25,7 @@ namespace DigitalAppaloosa.UserInterface
         {
             base.InitializeShell();
             //Application.Current.RootVisual = (UIElement)this.Shell;
-            Application.Current.MainWindow = (Window)this.Shell;
+            Application.Current.MainWindow = (Window)Shell;
             Application.Current.MainWindow.Show();
         }
 
@@ -47,10 +47,16 @@ namespace DigitalAppaloosa.UserInterface
             var regionAdapterMappings = Container.TryResolve<RegionAdapterMappings>();
             if (regionAdapterMappings != null)
             {
-                regionAdapterMappings.RegisterMapping(typeof(Ribbon), this.Container.Resolve<RibbonRegionAdapter>());
+                regionAdapterMappings.RegisterMapping(typeof(Ribbon), Container.Resolve<RibbonRegionAdapter>());
             }
-
+            logger.Debug("Test Log");
             return base.ConfigureRegionAdapterMappings();
+        }
+
+        protected override ILoggerFacade CreateLogger()
+        {
+            //return base.CreateLogger();
+            return new NLogLogger();
         }
 
     }
@@ -60,3 +66,4 @@ namespace DigitalAppaloosa.UserInterface
 //{
 //    base.ConfigureContainer();
 //}
+
