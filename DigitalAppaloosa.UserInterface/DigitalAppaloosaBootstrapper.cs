@@ -49,7 +49,14 @@ namespace DigitalAppaloosa.UserInterface
             {
                 regionAdapterMappings.RegisterMapping(typeof(Ribbon), Container.Resolve<RibbonRegionAdapter>());
             }
+
             logger.Debug("Test Log");
+            logger.Info("Info Log");
+            logger.Trace("Trace Log");
+            logger.Warn("Warn Log");
+            logger.Error("Error Log");
+            logger.Fatal("Fatal Log");
+
             return base.ConfigureRegionAdapterMappings();
         }
 
