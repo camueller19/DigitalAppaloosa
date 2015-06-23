@@ -1,14 +1,13 @@
 ﻿using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
 using Microsoft.Practices.Unity;
-using System;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
     public class ModuleBase : IModule
     {
-        private UnityContainer container;
-        private RegionManager regionManager;
+        protected UnityContainer container;
+        protected RegionManager regionManager;
 
         public ModuleBase(UnityContainer container, RegionManager regionManager)
         {
@@ -19,6 +18,11 @@ namespace DigitalAppaloosa.Shared.Prism
         public void Initialize()
         {
             //throw new NotImplementedException();
+            RegisterViews();
+        }
+
+        public virtual void RegisterViews()
+        {
         }
     }
 }
