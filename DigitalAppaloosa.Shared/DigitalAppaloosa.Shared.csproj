@@ -96,6 +96,7 @@
     <Compile Include="Logging\NLogLogger.cs" />
     <Compile Include="Prism\ModuleBase.cs" />
     <Compile Include="Prism\RibbonRegionAdapter.cs" />
+    <Compile Include="Prism\RibbonTabRegionAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

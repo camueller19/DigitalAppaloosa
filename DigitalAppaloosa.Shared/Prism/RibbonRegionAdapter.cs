@@ -8,8 +8,9 @@ namespace DigitalAppaloosa.Shared.Prism
 {
     public class RibbonRegionAdapter : RegionAdapterBase<Ribbon>
     {
-        public RibbonRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory) 
-            : base(regionBehaviorFactory) { }
+        public RibbonRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)
+            : base(regionBehaviorFactory)
+        { }
 
         private Ribbon ribbonRegionTarget;
 
