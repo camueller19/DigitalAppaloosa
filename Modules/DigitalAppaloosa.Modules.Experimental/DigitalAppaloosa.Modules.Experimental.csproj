@@ -115,12 +115,16 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\RibbonGroupTestAViewModel.cs" />
     <Compile Include="ViewModels\RibbonTabTestAViewModel.cs" />
+    <Compile Include="ViewModels\RibbonTestAViewModel.cs" />
     <Compile Include="ViewModels\TestCanvasViewModel.cs" />
     <Compile Include="Views\RibbonGroupTestAView.xaml.cs">
       <DependentUpon>RibbonGroupTestAView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\RibbonTabTestAView.xaml.cs">
       <DependentUpon>RibbonTabTestAView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RibbonTestAView.xaml.cs">
+      <DependentUpon>RibbonTestAView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TestCanvasView.xaml.cs">
       <DependentUpon>TestCanvasView.xaml</DependentUpon>
@@ -146,6 +150,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\RibbonTabTestAView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RibbonTestAView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -9,11 +9,9 @@ namespace DigitalAppaloosa.Modules.Experimental
 {
     public class ExperimentalModule : ModuleBase
     {
-
         public ExperimentalModule(UnityContainer container, RegionManager regionManager)
             : base(container, regionManager)
         {
-
         }
 
         public override void RegisterViews()
@@ -29,11 +27,21 @@ namespace DigitalAppaloosa.Modules.Experimental
             testCanvasView.DataContext = testCanvasVM;
             regionManager.AddToRegion(RegionNames.MainContentRegion, testCanvasView);
 
-            var ribbonTabTestBView = new RibbonTabTestAView();
-            var ribbonTabTestBVM = new RibbonTabTestAViewModel();
-            ribbonTabTestAView.DataContext = ribbonTabTestBVM;
-            ribbonTabTestBView.Header = "TestRibbonB";
-            regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTabTestBView);
+            //var ribbonTabTestBView = new RibbonTabTestAView();
+            //var ribbonTabTestBVM = new RibbonTabTestAViewModel();
+            //ribbonTabTestAView.DataContext = ribbonTabTestBVM;
+            //ribbonTabTestBView.Header = "TestRibbonB";
+            //regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTabTestBView);
+
+            //regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTabTestBView, )
+
+            var ribbonTestAView = new RibbonTestAView();
+            var newRibbonRegionManager = regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTestAView);
+
+            var ribbonGroupTestAView = new RibbonGroupTestAView();
+            var ribbonGroupTestAVM = new RibbonGroupTestAViewModel();
+            ribbonGroupTestAView.DataContext = ribbonGroupTestAVM;
+            newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestAView);
         }
 
         //public void Initialize()

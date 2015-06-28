@@ -48,14 +48,15 @@ namespace DigitalAppaloosa.UserInterface
             if (regionAdapterMappings != null)
             {
                 regionAdapterMappings.RegisterMapping(typeof(Ribbon), Container.Resolve<RibbonRegionAdapter>());
+                regionAdapterMappings.RegisterMapping(typeof(RibbonTab), Container.Resolve<RibbonTabRegionAdapter>());
             }
 
-            logger.Debug("Test Log");
-            logger.Info("Info Log");
-            logger.Trace("Trace Log");
-            logger.Warn("Warn Log");
-            logger.Error("Error Log");
-            logger.Fatal("Fatal Log");
+            //logger.Debug("Test Log");
+            //logger.Info("Info Log");
+            //logger.Trace("Trace Log");
+            //logger.Warn("Warn Log");
+            //logger.Error("Error Log");
+            //logger.Fatal("Fatal Log");
 
             return base.ConfigureRegionAdapterMappings();
         }

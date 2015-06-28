@@ -3,11 +3,11 @@
 namespace DigitalAppaloosa.Modules.Experimental.Views
 {
     /// <summary>
-    /// Interaktionslogik für RibbonGroupTestAView.xaml
+    /// Interaktionslogik für RibbonTestAView.xaml
     /// </summary>
-    public partial class RibbonGroupTestAView : RibbonGroup
+    public partial class RibbonTestAView : RibbonTab
     {
-        public RibbonGroupTestAView()
+        public RibbonTestAView()
         {
             InitializeComponent();
         }

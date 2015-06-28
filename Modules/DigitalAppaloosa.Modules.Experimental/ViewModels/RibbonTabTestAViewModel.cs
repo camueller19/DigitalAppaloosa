@@ -1,7 +1,7 @@
-﻿using GalaSoft.MvvmLight;
+﻿using System.Windows.Input;
+using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
 using NLog;
-using System.Windows.Input;
 
 namespace DigitalAppaloosa.Modules.Experimental.ViewModels
 {
@@ -32,7 +32,7 @@ namespace DigitalAppaloosa.Modules.Experimental.ViewModels
             logger.Info("Button A clicked");
         }
 
-        #endregion
+        #endregion ButtonACommand
 
         #region ButtonBCommand
 
@@ -50,7 +50,7 @@ namespace DigitalAppaloosa.Modules.Experimental.ViewModels
             logger.Info("Button B clicked");
         }
 
-        #endregion
+        #endregion ButtonBCommand
 
         #region ButtonCCommand
 
@@ -68,7 +68,6 @@ namespace DigitalAppaloosa.Modules.Experimental.ViewModels
             logger.Info("Button C clicked");
         }
 
-        #endregion
-
+        #endregion ButtonCCommand
     }
 }
