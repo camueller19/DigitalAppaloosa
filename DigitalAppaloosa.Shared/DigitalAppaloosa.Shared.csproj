@@ -92,9 +92,9 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Logging\NLogLogger.cs" />
     <Compile Include="Prism\ModuleBase.cs" />
+    <Compile Include="Prism\RibbonGroupRegionAdapter.cs" />
     <Compile Include="Prism\RibbonRegionAdapter.cs" />
     <Compile Include="Prism\RibbonTabRegionAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

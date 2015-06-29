@@ -5,7 +5,6 @@ using Microsoft.Practices.Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
-    //RibbonTabRegionAdapter
     public class RibbonTabRegionAdapter : RegionAdapterBase<RibbonTab>
     {
         public RibbonTabRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)

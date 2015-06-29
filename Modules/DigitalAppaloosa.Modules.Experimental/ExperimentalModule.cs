@@ -1,4 +1,5 @@
-﻿using DigitalAppaloosa.Interfaces;
+﻿using System.Windows.Controls.Ribbon;
+using DigitalAppaloosa.Interfaces;
 using DigitalAppaloosa.Modules.Experimental.ViewModels;
 using DigitalAppaloosa.Modules.Experimental.Views;
 using DigitalAppaloosa.Shared.Prism;
@@ -42,6 +43,12 @@ namespace DigitalAppaloosa.Modules.Experimental
             var ribbonGroupTestAVM = new RibbonGroupTestAViewModel();
             ribbonGroupTestAView.DataContext = ribbonGroupTestAVM;
             newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestAView);
+
+            var ribbonGroupTestBView = new RibbonGroupTestBView();
+            var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
+
+            var ribbonButtonD = new RibbonButton() { Command = ExperimentalStaticCommands.ButtonDCommand , Label = "Button D" };
+            newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
         }
 
         //public void Initialize()
