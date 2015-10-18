@@ -3,7 +3,7 @@ using DigitalAppaloosa.Interfaces;
 using DigitalAppaloosa.Modules.Experimental.ViewModels;
 using DigitalAppaloosa.Modules.Experimental.Views;
 using DigitalAppaloosa.Shared.Prism;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Regions;
 using Microsoft.Practices.Unity;
 
 namespace DigitalAppaloosa.Modules.Experimental
@@ -23,10 +23,10 @@ namespace DigitalAppaloosa.Modules.Experimental
             ribbonTabTestAView.DataContext = ribbonTabTestAVM;
             regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTabTestAView);
 
-            var testCanvasView = new TestCanvasView();
-            var testCanvasVM = new TestCanvasViewModel();
-            testCanvasView.DataContext = testCanvasVM;
-            regionManager.AddToRegion(RegionNames.MainContentRegion, testCanvasView);
+            //var testCanvasView = new TestCanvasView();
+            //var testCanvasVM = new TestCanvasViewModel();
+            //testCanvasView.DataContext = testCanvasVM;
+            //regionManager.AddToRegion(RegionNames.MainContentRegion, testCanvasView);
 
             //var ribbonTabTestBView = new RibbonTabTestAView();
             //var ribbonTabTestBVM = new RibbonTabTestAViewModel();

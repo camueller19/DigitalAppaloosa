@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Windows.Controls.Ribbon;
-using Microsoft.Practices.Prism.Regions;
+using Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
 {

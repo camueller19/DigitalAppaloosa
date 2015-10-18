@@ -1,14 +1,15 @@
-﻿using Microsoft.Practices.Prism.UnityExtensions;
-using Microsoft.Practices.Prism.Modularity;
-using Microsoft.Practices.Unity;
-using System.Windows;
-using DigitalAppaloosa.Modules.Experimental;
-using Microsoft.Practices.Prism.Regions;
+﻿using System.Windows;
 using System.Windows.Controls.Ribbon;
-using DigitalAppaloosa.Shared.Prism;
-using Microsoft.Practices.Prism.Logging;
+using DigitalAppaloosa.Modules.Drafting;
+using DigitalAppaloosa.Modules.Experimental;
 using DigitalAppaloosa.Shared.Logging;
+using DigitalAppaloosa.Shared.Prism;
+using Microsoft.Practices.Unity;
 using NLog;
+using Prism.Logging;
+using Prism.Modularity;
+using Prism.Regions;
+using Prism.Unity;
 
 namespace DigitalAppaloosa.UserInterface
 {
@@ -34,13 +35,20 @@ namespace DigitalAppaloosa.UserInterface
             base.ConfigureModuleCatalog();
 
             var experimentalModule = typeof(ExperimentalModule);
+            var draftingModule = typeof(DraftingModule);
             ModuleCatalog.AddModule(
                 new ModuleInfo()
                 {
                     ModuleName = experimentalModule.Name,
                     ModuleType = experimentalModule.AssemblyQualifiedName,
                 });
-        }        
+            ModuleCatalog.AddModule(
+                new ModuleInfo
+                {
+                    ModuleName = draftingModule.Name,
+                    ModuleType= draftingModule.AssemblyQualifiedName
+                });
+        }
 
         protected override RegionAdapterMappings ConfigureRegionAdapterMappings()
         {
@@ -66,7 +74,6 @@ namespace DigitalAppaloosa.UserInterface
             //return base.CreateLogger();
             return new NLogLogger();
         }
-
     }
 }
 
@@ -74,4 +81,3 @@ namespace DigitalAppaloosa.UserInterface
 //{
 //    base.ConfigureContainer();
 //}
-
