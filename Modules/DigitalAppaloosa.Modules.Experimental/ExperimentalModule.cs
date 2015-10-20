@@ -3,15 +3,16 @@ using DigitalAppaloosa.Interfaces;
 using DigitalAppaloosa.Modules.Experimental.ViewModels;
 using DigitalAppaloosa.Modules.Experimental.Views;
 using DigitalAppaloosa.Shared.Prism;
-using Prism.Regions;
 using Microsoft.Practices.Unity;
+using Prism.Events;
+using Prism.Regions;
 
 namespace DigitalAppaloosa.Modules.Experimental
 {
     public class ExperimentalModule : ModuleBase
     {
-        public ExperimentalModule(UnityContainer container, RegionManager regionManager)
-            : base(container, regionManager)
+        public ExperimentalModule(UnityContainer container, RegionManager regionManager, EventAggregator eventAggregator)
+            : base(container, regionManager, eventAggregator)
         {
         }
 
@@ -22,11 +23,6 @@ namespace DigitalAppaloosa.Modules.Experimental
             var ribbonTabTestAVM = new RibbonTabTestAViewModel();
             ribbonTabTestAView.DataContext = ribbonTabTestAVM;
             regionManager.AddToRegion(RegionNames.RibbonRegion, ribbonTabTestAView);
-
-            //var testCanvasView = new TestCanvasView();
-            //var testCanvasVM = new TestCanvasViewModel();
-            //testCanvasView.DataContext = testCanvasVM;
-            //regionManager.AddToRegion(RegionNames.MainContentRegion, testCanvasView);
 
             //var ribbonTabTestBView = new RibbonTabTestAView();
             //var ribbonTabTestBVM = new RibbonTabTestAViewModel();
@@ -47,13 +43,8 @@ namespace DigitalAppaloosa.Modules.Experimental
             var ribbonGroupTestBView = new RibbonGroupTestBView();
             var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
 
-            var ribbonButtonD = new RibbonButton() { Command = ExperimentalStaticCommands.ButtonDCommand , Label = "Button D" };
+            var ribbonButtonD = new RibbonButton() { Command = ExperimentalStaticCommands.ButtonDCommand, Label = "Button D" };
             newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
         }
-
-        //public void Initialize()
-        //{
-        //    //throw new NotImplementedException();
-        //}
     }
 }

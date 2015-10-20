@@ -1,18 +1,21 @@
-﻿using Prism.Modularity;
+﻿using Microsoft.Practices.Unity;
+using Prism.Events;
+using Prism.Modularity;
 using Prism.Regions;
-using Microsoft.Practices.Unity;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
     public class ModuleBase : IModule
     {
-        protected UnityContainer container;
-        protected RegionManager regionManager;
+        protected IUnityContainer container;
+        protected IRegionManager regionManager;
+        protected IEventAggregator eventAggregator;
 
-        public ModuleBase(UnityContainer container, RegionManager regionManager)
+        public ModuleBase(IUnityContainer container, IRegionManager regionManager, IEventAggregator eventAggregator)
         {
             this.container = container;
             this.regionManager = regionManager;
+            this.eventAggregator=eventAggregator;
         }
 
         public void Initialize()

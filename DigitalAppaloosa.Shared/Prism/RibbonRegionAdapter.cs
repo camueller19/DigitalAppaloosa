@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Specialized;
 using System.Windows.Controls.Ribbon;
+using NLog;
 using Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
     public class RibbonRegionAdapter : RegionAdapterBase<Ribbon>
     {
+        //private static Logger logger = LogManager.GetCurrentClassLogger();
+
         public RibbonRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)
             : base(regionBehaviorFactory)
         { }
@@ -50,6 +53,7 @@ namespace DigitalAppaloosa.Shared.Prism
             if (ribbonView is RibbonTab)
             {
                 ribbonRegionTarget.Items.Add(ribbonView);
+                //logger.Info("View added: " + ribbonView);
             }
             else
             {
