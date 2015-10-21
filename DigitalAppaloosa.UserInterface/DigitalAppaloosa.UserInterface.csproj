@@ -164,6 +164,10 @@
       <Project>{a674f183-292a-4971-8ead-0c84e43be451}</Project>
       <Name>DigitalAppaloosa.Shared</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DigitalAppaloosa.Windows\DigitalAppaloosa.Windows.csproj">
+      <Project>{d5ad372b-2f09-41ea-8b4b-e0089bcbf535}</Project>
+      <Name>DigitalAppaloosa.Windows</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Modules\DigitalAppaloosa.Modules.Drafting\DigitalAppaloosa.Modules.Drafting.csproj">
       <Project>{500ff477-6433-4a64-8f8c-e3dad945e8d0}</Project>
       <Name>DigitalAppaloosa.Modules.Drafting</Name>
