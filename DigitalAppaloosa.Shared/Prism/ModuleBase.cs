@@ -21,7 +21,13 @@ namespace DigitalAppaloosa.Shared.Prism
         public void Initialize()
         {
             //throw new NotImplementedException();
+            RegisterEvents();
             RegisterViews();
+        }
+
+        public virtual void RegisterEvents()
+        {
+
         }
 
         public virtual void RegisterViews()

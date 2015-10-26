@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 using NLog;
@@ -13,7 +14,9 @@ namespace DigitalAppaloosa.Windows.Behaviors
         {
             base.OnAttached();
             var itemsControl = this.AssociatedObject;
-            itemsControl.PreviewMouseLeftButtonDown += ItemsControlPreviewMouseLeftButtonDown;
+            //itemsControl.PreviewMouseLeftButtonDown += ItemsControlPreviewMouseLeftButtonDown;
+            itemsControl.AddHandler(
+                UIElement.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(ItemsControlPreviewMouseLeftButtonDown));
         }
 
         protected override void OnDetaching()

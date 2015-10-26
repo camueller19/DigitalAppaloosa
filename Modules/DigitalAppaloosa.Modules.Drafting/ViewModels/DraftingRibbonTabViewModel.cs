@@ -14,7 +14,7 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
 
         public DraftingRibbonTabViewModel(IEventAggregator eventAggregator)
         {
-            this.eventAggregator =eventAggregator;
+            this.eventAggregator = eventAggregator;
             drawRectangleCommand = new RelayCommand(DrawRectangleCommandExecuted);
         }
 
@@ -32,7 +32,8 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
         {
             //throw new NotImplementedException();
             logger.Info("DrawRectangleCommand clicked");
-            eventAggregator.GetEvent<FigureOperationEvent>().Publish(FigureOperation.Rectangle);
+            var foe = eventAggregator.GetEvent<FigureOperationEvent>();
+            foe.Publish(FigureOperation.Rectangle);
         }
 
         #endregion
