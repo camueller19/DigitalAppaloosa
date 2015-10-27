@@ -7,12 +7,18 @@
              xmlns:local="clr-namespace:DigitalAppaloosa.Modules.Drafting.Views"
              xmlns:behaviors="clr-namespace:DigitalAppaloosa.Windows.Behaviors;assembly=DigitalAppaloosa.Windows"
              mc:Ignorable="d"
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300"
+             d:DesignWidth="300">
     <Grid>
-        <ItemsControl  ItemsSource="{Binding Items}">
+        <!--<Canvas>
             <i:Interaction.Behaviors>
-                <behaviors:DraftingBehavior />
+            </i:Interaction.Behaviors>-->
+        <!--</Canvas>-->
+        <ItemsControl  ItemsSource="{Binding Items}"
+                       Background="White">
+            <i:Interaction.Behaviors>
                 <behaviors:DragDropBehavior />
+                <behaviors:DraftingBehavior />
             </i:Interaction.Behaviors>
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

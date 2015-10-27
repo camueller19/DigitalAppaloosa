@@ -1,11 +1,11 @@
-﻿using System.Windows;
-using System.Windows.Controls;
+﻿using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Interactivity;
 using NLog;
 
 namespace DigitalAppaloosa.Windows.Behaviors
 {
+    //public class DraftingBehavior : Behavior<Panel>
     public class DraftingBehavior : Behavior<ItemsControl>
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -13,16 +13,16 @@ namespace DigitalAppaloosa.Windows.Behaviors
         protected override void OnAttached()
         {
             base.OnAttached();
-            var itemsControl = this.AssociatedObject;
-            //itemsControl.PreviewMouseLeftButtonDown += ItemsControlPreviewMouseLeftButtonDown;
-            itemsControl.AddHandler(
-                UIElement.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(ItemsControlPreviewMouseLeftButtonDown));
+            var itemsControl = AssociatedObject;
+            itemsControl.PreviewMouseLeftButtonDown += ItemsControlPreviewMouseLeftButtonDown;
+            //itemsControl.AddHandler(
+            //    UIElement.PreviewMouseLeftButtonDownEvent, new MouseButtonEventHandler(ItemsControlPreviewMouseLeftButtonDown));
         }
 
         protected override void OnDetaching()
         {
             base.OnDetaching();
-            var itemsControl = this.AssociatedObject;
+            var itemsControl = AssociatedObject;
             itemsControl.PreviewMouseLeftButtonDown -= ItemsControlPreviewMouseLeftButtonDown;
         }
 
