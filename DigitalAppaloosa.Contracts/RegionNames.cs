@@ -1,4 +1,4 @@
-﻿namespace DigitalAppaloosa.Interfaces
+﻿namespace DigitalAppaloosa.Contracts
 {
     public static class RegionNames
     {

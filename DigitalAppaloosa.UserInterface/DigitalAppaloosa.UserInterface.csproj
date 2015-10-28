@@ -156,9 +156,9 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DigitalAppaloosa.Interfaces\DigitalAppaloosa.Interfaces.csproj">
-      <Project>{d5b2fab2-0532-4d7e-9b55-05dd11d9fe9b}</Project>
-      <Name>DigitalAppaloosa.Interfaces</Name>
+    <ProjectReference Include="..\DigitalAppaloosa.Contracts\DigitalAppaloosa.Contracts.csproj">
+      <Project>{5d69fe2a-834c-427a-a190-358dc8fb203a}</Project>
+      <Name>DigitalAppaloosa.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\DigitalAppaloosa.Shared\DigitalAppaloosa.Shared.csproj">
       <Project>{a674f183-292a-4971-8ead-0c84e43be451}</Project>

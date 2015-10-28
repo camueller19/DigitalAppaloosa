@@ -1,4 +1,4 @@
-﻿using DigitalAppaloosa.Interfaces;
+﻿using DigitalAppaloosa.Contracts;
 using DigitalAppaloosa.Modules.Drafting.ViewModels;
 using DigitalAppaloosa.Modules.Drafting.Views;
 using DigitalAppaloosa.Shared.Prism;

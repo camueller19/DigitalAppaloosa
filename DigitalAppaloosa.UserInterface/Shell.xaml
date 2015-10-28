@@ -5,7 +5,7 @@
               xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
               xmlns:local="clr-namespace:DigitalAppaloosa.UserInterface"
               xmlns:prism="http://www.codeplex.com/prism"
-              xmlns:int="clr-namespace:DigitalAppaloosa.Interfaces;assembly=DigitalAppaloosa.Interfaces"
+              xmlns:int="clr-namespace:DigitalAppaloosa.Contracts;assembly=DigitalAppaloosa.Contracts"
               mc:Ignorable="d"
               Title="Shell"
               Height="800"

@@ -5,7 +5,7 @@
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:local="clr-namespace:DigitalAppaloosa.Modules.Experimental.Views"
            xmlns:prism="http://www.codeplex.com/prism"
-           xmlns:int="clr-namespace:DigitalAppaloosa.Interfaces;assembly=DigitalAppaloosa.Interfaces"
+           xmlns:int="clr-namespace:DigitalAppaloosa.Contracts;assembly=DigitalAppaloosa.Contracts"
            mc:Ignorable="d"
            d:DesignHeight="300"
            d:DesignWidth="300"

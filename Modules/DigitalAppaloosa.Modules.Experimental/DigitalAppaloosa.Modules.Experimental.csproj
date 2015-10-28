@@ -5,6 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{F2467528-E68C-4C68-884C-16B06E0785F2}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>DigitalAppaloosa.Modules.Experimental</RootNamespace>
@@ -118,9 +119,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\DigitalAppaloosa.Interfaces\DigitalAppaloosa.Interfaces.csproj">
-      <Project>{d5b2fab2-0532-4d7e-9b55-05dd11d9fe9b}</Project>
-      <Name>DigitalAppaloosa.Interfaces</Name>
+    <ProjectReference Include="..\..\DigitalAppaloosa.Contracts\DigitalAppaloosa.Contracts.csproj">
+      <Project>{5d69fe2a-834c-427a-a190-358dc8fb203a}</Project>
+      <Name>DigitalAppaloosa.Contracts</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\DigitalAppaloosa.Shared\DigitalAppaloosa.Shared.csproj">
       <Project>{a674f183-292a-4971-8ead-0c84e43be451}</Project>
@@ -146,7 +147,7 @@
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

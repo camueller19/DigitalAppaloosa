@@ -1,5 +1,5 @@
 ﻿using System.Windows.Controls.Ribbon;
-using DigitalAppaloosa.Interfaces;
+using DigitalAppaloosa.Contracts;
 using DigitalAppaloosa.Modules.Experimental.ViewModels;
 using DigitalAppaloosa.Modules.Experimental.Views;
 using DigitalAppaloosa.Shared.Prism;

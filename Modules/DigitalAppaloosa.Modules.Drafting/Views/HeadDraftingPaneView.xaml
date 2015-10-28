@@ -9,16 +9,11 @@
              mc:Ignorable="d"
              d:DesignHeight="300"
              d:DesignWidth="300">
-    <Grid>
-        <!--<Canvas>
-            <i:Interaction.Behaviors>
-            </i:Interaction.Behaviors>-->
-        <!--</Canvas>-->
+    <Grid>      
         <ItemsControl  ItemsSource="{Binding Items}"
                        Background="White">
             <i:Interaction.Behaviors>
-                <behaviors:DragDropBehavior />
-                <behaviors:DraftingBehavior />
+                <behaviors:MouseButtonEventBehavior MouseButtonEventHandlers="{Binding MouseButtonEventHandlers}"/>
             </i:Interaction.Behaviors>
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

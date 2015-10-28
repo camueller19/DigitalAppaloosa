@@ -9,13 +9,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{2AB8
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Modules.Experimental", "Modules\DigitalAppaloosa.Modules.Experimental\DigitalAppaloosa.Modules.Experimental.csproj", "{F2467528-E68C-4C68-884C-16B06E0785F2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Interfaces", "DigitalAppaloosa.Interfaces\DigitalAppaloosa.Interfaces.csproj", "{D5B2FAB2-0532-4D7E-9B55-05DD11D9FE9B}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Shared", "DigitalAppaloosa.Shared\DigitalAppaloosa.Shared.csproj", "{A674F183-292A-4971-8EAD-0C84E43BE451}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Modules.Drafting", "Modules\DigitalAppaloosa.Modules.Drafting\DigitalAppaloosa.Modules.Drafting.csproj", "{500FF477-6433-4A64-8F8C-E3DAD945E8D0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Windows", "DigitalAppaloosa.Windows\DigitalAppaloosa.Windows.csproj", "{D5AD372B-2F09-41EA-8B4B-E0089BCBF535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalAppaloosa.Contracts", "DigitalAppaloosa.Contracts\DigitalAppaloosa.Contracts.csproj", "{5D69FE2A-834C-427A-A190-358DC8FB203A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,10 +31,6 @@ Global
 		{F2467528-E68C-4C68-884C-16B06E0785F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2467528-E68C-4C68-884C-16B06E0785F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2467528-E68C-4C68-884C-16B06E0785F2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D5B2FAB2-0532-4D7E-9B55-05DD11D9FE9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D5B2FAB2-0532-4D7E-9B55-05DD11D9FE9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D5B2FAB2-0532-4D7E-9B55-05DD11D9FE9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D5B2FAB2-0532-4D7E-9B55-05DD11D9FE9B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A674F183-292A-4971-8EAD-0C84E43BE451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A674F183-292A-4971-8EAD-0C84E43BE451}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A674F183-292A-4971-8EAD-0C84E43BE451}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +43,10 @@ Global
 		{D5AD372B-2F09-41EA-8B4B-E0089BCBF535}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D5AD372B-2F09-41EA-8B4B-E0089BCBF535}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D5AD372B-2F09-41EA-8B4B-E0089BCBF535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D69FE2A-834C-427A-A190-358DC8FB203A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D69FE2A-834C-427A-A190-358DC8FB203A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D69FE2A-834C-427A-A190-358DC8FB203A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D69FE2A-834C-427A-A190-358DC8FB203A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

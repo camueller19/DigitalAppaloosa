@@ -4,7 +4,10 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
 using System.Windows.Shapes;
+using DigitalAppaloosa.Contracts.Interfaces;
+using DigitalAppaloosa.Modules.Drafting.Handlers;
 using DigitalAppaloosa.Shared.PubSubEvents;
+using DigitalAppaloosa.Windows.Handlers;
 using GalaSoft.MvvmLight;
 
 namespace DigitalAppaloosa.Modules.Drafting.ViewModels
@@ -12,7 +15,7 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
     public class HeadDraftingPaneViewModel : ViewModelBase
     {
         private ICollection<FrameworkElement> items;
-
+        private IEnumerable<IMouseButtonEventHandler> mouseButtonEventHandlers;
         private int offset;
 
         public HeadDraftingPaneViewModel()
@@ -26,12 +29,21 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
                 Margin = new Thickness(50, 200, 10, 10)
             });
             offset = 1;
+
+            mouseButtonEventHandlers = new ObservableCollection<IMouseButtonEventHandler>() {
+                new DraftingHandler(), new DragDropHandler() };
         }
 
         public ICollection<FrameworkElement> Items
         {
             get { return items; }
             set { Set(nameof(Items), ref items, value); }
+        }
+
+        public IEnumerable<IMouseButtonEventHandler> MouseButtonEventHandlers
+        {
+            get { return mouseButtonEventHandlers; }
+            set { Set(nameof(MouseButtonEventHandlers), ref mouseButtonEventHandlers, value); }
         }
 
         internal void AddFigure(FigureOperation figureOperation)
