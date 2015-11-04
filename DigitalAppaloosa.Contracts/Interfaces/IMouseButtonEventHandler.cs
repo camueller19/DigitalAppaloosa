@@ -2,6 +2,10 @@
 {
     public interface IMouseButtonEventHandler
     {
-        void HandleMouseButtonEvent();
+        void HandlePreviewMouseLeftButtonDownEvent();
+
+        void HandlePreviewMouseLeftButtonUpEvent();
+
+        void HandlePreviewMouseMove();
     }
 }

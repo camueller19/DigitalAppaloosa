@@ -7,7 +7,17 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public void HandleMouseButtonEvent()
+        public void HandlePreviewMouseLeftButtonDownEvent()
+        {
+            logger.Info(nameof(DraftingHandler));
+        }
+
+        public void HandlePreviewMouseLeftButtonUpEvent()
+        {
+            logger.Info(nameof(DraftingHandler));
+        }
+
+        public void HandlePreviewMouseMove()
         {
             logger.Info(nameof(DraftingHandler));
         }

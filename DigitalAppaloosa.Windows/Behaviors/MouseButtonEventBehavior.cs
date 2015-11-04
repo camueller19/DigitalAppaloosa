@@ -29,6 +29,8 @@ namespace DigitalAppaloosa.Windows.Behaviors
             base.OnAttached();
             var itemsControl = AssociatedObject;
             itemsControl.PreviewMouseLeftButtonDown += ItemsControlPreviewMouseLeftButtonDown;
+            itemsControl.PreviewMouseLeftButtonUp += ItemsControlPreviewMouseLeftButtonUp;
+            itemsControl.PreviewMouseMove += ItemsControlPreviewMouseMove;
         }
 
         protected override void OnDetaching()
@@ -36,6 +38,8 @@ namespace DigitalAppaloosa.Windows.Behaviors
             base.OnDetaching();
             var itemsControl = AssociatedObject;
             itemsControl.PreviewMouseLeftButtonDown -= ItemsControlPreviewMouseLeftButtonDown;
+            itemsControl.PreviewMouseLeftButtonUp -= ItemsControlPreviewMouseLeftButtonUp;
+            itemsControl.PreviewMouseMove -= ItemsControlPreviewMouseMove;
         }
 
         private void ItemsControlPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -46,7 +50,33 @@ namespace DigitalAppaloosa.Windows.Behaviors
             {
                 foreach (var handler in MouseButtonEventHandlers)
                 {
-                    handler.HandleMouseButtonEvent();
+                    handler.HandlePreviewMouseLeftButtonDownEvent();
+                }
+            }
+        }
+
+        private void ItemsControlPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
+        {
+            e.Handled = true;
+            logger.Info("handled in DraftingBehavior ");
+            if (MouseButtonEventHandlers != null)
+            {
+                foreach (var handler in MouseButtonEventHandlers)
+                {
+                    handler.HandlePreviewMouseLeftButtonUpEvent();
+                }
+            }
+        }
+
+        private void ItemsControlPreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            e.Handled = true;
+            logger.Info("handled in DraftingBehavior ");
+            if (MouseButtonEventHandlers != null)
+            {
+                foreach (var handler in MouseButtonEventHandlers)
+                {
+                    handler.HandlePreviewMouseMove();
                 }
             }
         }
