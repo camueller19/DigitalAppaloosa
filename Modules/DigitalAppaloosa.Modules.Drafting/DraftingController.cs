@@ -24,7 +24,8 @@ namespace DigitalAppaloosa.Modules.Drafting
         public static void FigureOperationEventTest(FigureOperation figureOperation)
         {
             logger.Info("FigureOperationEvent with Payload: " + figureOperation);
-            Instance.HeadDraftingPaneViewModel.AddFigure(figureOperation);
+            //TODO set FigureOperation
+            //Instance.HeadDraftingPaneViewModel.AddFigure(figureOperation);
         }
 
         public void RegisterViewModel(HeadDraftingPaneViewModel headDraftingPaneViewModel)

@@ -28,13 +28,8 @@ namespace DigitalAppaloosa.Modules.Drafting
             draftingRibView.DataContext = draftingRibVM;
             regionManager.AddToRegion(RegionNames.RibbonRegion, draftingRibView);
 
-            var draftingView = new HeadDraftingPaneView();
-            var draftingVM = new HeadDraftingPaneViewModel();
-            draftingView.DataContext = draftingVM;
+            var draftingView = DraftingFactory.CreateDraftingViewWithViewModel();
             regionManager.AddToRegion(RegionNames.MainContentRegion, draftingView);
-            DraftingController.Instance.RegisterViewModel(draftingVM);
         }
     }
 }
-
-//draftingController = new DraftingController(eventAggregator, draftingVM);

@@ -7,17 +7,17 @@ namespace DigitalAppaloosa.Windows.Handlers
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
-        public void HandlePreviewMouseLeftButtonDownEvent()
+        public void HandlePreviewMouseLeftButtonDownEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
             logger.Info(nameof(DragDropHandler));
         }
 
-        public void HandlePreviewMouseLeftButtonUpEvent()
+        public void HandlePreviewMouseLeftButtonUpEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
             logger.Info(nameof(DragDropHandler));
         }
 
-        public void HandlePreviewMouseMove()
+        public void HandlePreviewMouseMove(IMouseButtonEventDataTransferObject mouseEventData)
         {
             logger.Info(nameof(DragDropHandler));
         }

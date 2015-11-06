@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DraftingController.cs" />
+    <Compile Include="DraftingFactory.cs" />
     <Compile Include="DraftingModule.cs" />
     <Compile Include="Handlers\DraftingHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

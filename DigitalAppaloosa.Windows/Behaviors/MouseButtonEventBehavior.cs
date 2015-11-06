@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -48,9 +49,11 @@ namespace DigitalAppaloosa.Windows.Behaviors
             logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
+                var mbedto = new MouseButtonEventDataTransferObject(e);
                 foreach (var handler in MouseButtonEventHandlers)
                 {
-                    handler.HandlePreviewMouseLeftButtonDownEvent();
+                    //e.GetPosition()
+                    handler.HandlePreviewMouseLeftButtonDownEvent(mbedto);
                 }
             }
         }
@@ -61,9 +64,10 @@ namespace DigitalAppaloosa.Windows.Behaviors
             logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
+                var mbedto = new MouseButtonEventDataTransferObject(e);
                 foreach (var handler in MouseButtonEventHandlers)
                 {
-                    handler.HandlePreviewMouseLeftButtonUpEvent();
+                    handler.HandlePreviewMouseLeftButtonUpEvent(mbedto);
                 }
             }
         }
@@ -74,11 +78,26 @@ namespace DigitalAppaloosa.Windows.Behaviors
             logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
+                var mbedto = new MouseButtonEventDataTransferObject(e);
                 foreach (var handler in MouseButtonEventHandlers)
                 {
-                    handler.HandlePreviewMouseMove();
+                    handler.HandlePreviewMouseMove(mbedto);
                 }
             }
+        }
+    }
+
+    public class MouseButtonEventDataTransferObject : IMouseButtonEventDataTransferObject
+    {
+        public MouseButtonEventDataTransferObject(MouseEventArgs eventArgs)
+        {
+            GetPosition = eventArgs.GetPosition;
+        }
+
+        public Func<IInputElement, Point> GetPosition
+        {
+            get;
+            private set;
         }
     }
 }
