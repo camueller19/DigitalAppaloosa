@@ -46,7 +46,7 @@ namespace DigitalAppaloosa.Windows.Behaviors
         private void ItemsControlPreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
-            logger.Info("handled in DraftingBehavior ");
+            //logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
                 var mbedto = new MouseButtonEventDataTransferObject(e);
@@ -61,7 +61,7 @@ namespace DigitalAppaloosa.Windows.Behaviors
         private void ItemsControlPreviewMouseLeftButtonUp(object sender, MouseButtonEventArgs e)
         {
             e.Handled = true;
-            logger.Info("handled in DraftingBehavior ");
+            //logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
                 var mbedto = new MouseButtonEventDataTransferObject(e);
@@ -75,7 +75,7 @@ namespace DigitalAppaloosa.Windows.Behaviors
         private void ItemsControlPreviewMouseMove(object sender, MouseEventArgs e)
         {
             e.Handled = true;
-            logger.Info("handled in DraftingBehavior ");
+            //logger.Info("handled in DraftingBehavior ");
             if (MouseButtonEventHandlers != null)
             {
                 var mbedto = new MouseButtonEventDataTransferObject(e);

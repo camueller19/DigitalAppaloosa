@@ -23,36 +23,58 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
 
         public void HandlePreviewMouseLeftButtonDownEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            logger.Info(nameof(DraftingHandler));
+            //logger.Info(nameof(DraftingHandler));
             draftingFigure = new Rectangle()
             {
                 Fill = new SolidColorBrush(Colors.Green),
                 Height = 1,
-                Width = 1,
-                Margin = new Thickness(50, 200, 10, 10)
+                Width = 1
+                //Margin = new Thickness(50, 200, 10, 10)
             };
             draftingViewModel.Items.Add(draftingFigure);
+            var startPositionLog = mouseEventData.GetPosition(null);
             startPosition = mouseEventData.GetPosition(positionReference);
+            logger.Info("StartPosition: " + startPosition.ToString() + "|" + startPositionLog.ToString());
             Canvas.SetLeft(draftingFigure, startPosition.X);
             Canvas.SetTop(draftingFigure, startPosition.Y);
         }
 
         public void HandlePreviewMouseLeftButtonUpEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            logger.Info(nameof(DraftingHandler));
+            //logger.Info(nameof(DraftingHandler));
             draftingFigure = null;
         }
 
         public void HandlePreviewMouseMove(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            logger.Info(nameof(DraftingHandler));
+            //logger.Info(nameof(DraftingHandler));
             if (draftingFigure != null)
             {
                 var position = mouseEventData.GetPosition(positionReference);
-                var figureHeight = System.Math.Abs(position.Y - startPosition.Y);
-                draftingFigure.Height = figureHeight;
-                var figureWidth = System.Math.Abs(position.X - startPosition.X);
-                draftingFigure.Width = figureWidth;
+                //var position = mouseEventData.GetPosition(null);
+                var mouseRouteY = position.Y - startPosition.Y;
+                if (mouseRouteY > 0)
+                {
+                    draftingFigure.Height = mouseRouteY;
+                }
+                else
+                {
+                    var figureHeight = System.Math.Abs(mouseRouteY);
+                    draftingFigure.Height = figureHeight;
+                    Canvas.SetTop(draftingFigure, position.Y);
+                }
+
+                var mouseRouteX = position.X - startPosition.X;
+                if (mouseRouteX > 0)
+                {
+                    draftingFigure.Width = mouseRouteX;
+                }
+                else
+                {
+                    var figureWidth = System.Math.Abs(mouseRouteX);
+                    draftingFigure.Width = figureWidth;
+                    Canvas.SetLeft(draftingFigure, position.X);
+                }
             }
         }
     }

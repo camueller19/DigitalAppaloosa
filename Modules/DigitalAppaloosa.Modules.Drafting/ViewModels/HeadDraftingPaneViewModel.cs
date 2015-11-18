@@ -21,8 +21,8 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
             {
                 Fill = new SolidColorBrush(Colors.Blue),
                 Height = 20,
-                Width = 30,
-                Margin = new Thickness(50, 200, 10, 10)
+                Width = 30
+                //Margin = new Thickness(50, 200, 10, 10)
             });
             offset = 1;
         }
