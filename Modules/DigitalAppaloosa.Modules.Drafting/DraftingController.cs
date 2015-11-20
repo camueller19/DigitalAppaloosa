@@ -1,3 +1,4 @@
+using DigitalAppaloosa.Modules.Drafting.Handlers;
 using DigitalAppaloosa.Modules.Drafting.ViewModels;
 using DigitalAppaloosa.Shared.PubSubEvents;
 using NLog;
@@ -19,13 +20,19 @@ namespace DigitalAppaloosa.Modules.Drafting
             set { instance = value; }
         }
 
+        public DraftingHandler DraftingHandler { get; private set; }
+
         public HeadDraftingPaneViewModel HeadDraftingPaneViewModel { get; private set; }
 
         public static void FigureOperationEventTest(FigureOperation figureOperation)
         {
             logger.Info("FigureOperationEvent with Payload: " + figureOperation);
-            //TODO set FigureOperation
-            //Instance.HeadDraftingPaneViewModel.AddFigure(figureOperation);
+            Instance.DraftingHandler.DrawFigure = figureOperation;
+        }
+
+        internal void RegisterDraftingHandler(DraftingHandler draftingHandler)
+        {
+            DraftingHandler = draftingHandler;
         }
 
         public void RegisterViewModel(HeadDraftingPaneViewModel headDraftingPaneViewModel)

@@ -1,8 +1,8 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Shapes;
+﻿using System.Collections.Generic;
+using System.Windows;
 using DigitalAppaloosa.Contracts.Interfaces;
+using DigitalAppaloosa.Modules.Drafting.Strategies;
+using DigitalAppaloosa.Shared.PubSubEvents;
 using NLog;
 
 namespace DigitalAppaloosa.Modules.Drafting.Handlers
@@ -10,71 +10,45 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
     public class DraftingHandler : IMouseButtonEventHandler
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-        private IDraftingPaneViewModel draftingViewModel;
-        private Shape draftingFigure;
-        private FrameworkElement positionReference;
-        private Point startPosition;
+
+        //private IDraftingPaneViewModel draftingViewModel;
+        //private FrameworkElement positionReference;
+        private Dictionary<FigureOperation, IDraftingStrategy> draftingStrategies;
+
+        public FigureOperation DrawFigure { get; set; }
 
         public DraftingHandler(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         {
-            this.draftingViewModel = draftingViewModel;
-            this.positionReference = positionReference;
+            //this.draftingViewModel = draftingViewModel;
+            //this.positionReference = positionReference;
+            draftingStrategies = new Dictionary<FigureOperation, IDraftingStrategy>()
+            {
+                { FigureOperation.Rectangle, new DraftingRectangleStrategy(draftingViewModel, positionReference) },
+                { FigureOperation.Circle, new DraftingCircleStrategy(draftingViewModel, positionReference) }
+            };
         }
 
         public void HandlePreviewMouseLeftButtonDownEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            //logger.Info(nameof(DraftingHandler));
-            draftingFigure = new Rectangle()
+            if (draftingStrategies.ContainsKey(DrawFigure))
             {
-                Fill = new SolidColorBrush(Colors.Green),
-                Height = 1,
-                Width = 1
-                //Margin = new Thickness(50, 200, 10, 10)
-            };
-            draftingViewModel.Items.Add(draftingFigure);
-            var startPositionLog = mouseEventData.GetPosition(null);
-            startPosition = mouseEventData.GetPosition(positionReference);
-            logger.Info("StartPosition: " + startPosition.ToString() + "|" + startPositionLog.ToString());
-            Canvas.SetLeft(draftingFigure, startPosition.X);
-            Canvas.SetTop(draftingFigure, startPosition.Y);
+                draftingStrategies[DrawFigure].BeginDrafting(mouseEventData);
+            }
         }
 
         public void HandlePreviewMouseLeftButtonUpEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            //logger.Info(nameof(DraftingHandler));
-            draftingFigure = null;
+            if (draftingStrategies.ContainsKey(DrawFigure))
+            {
+                draftingStrategies[DrawFigure].EndDrafting();
+            }
         }
 
         public void HandlePreviewMouseMove(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            //logger.Info(nameof(DraftingHandler));
-            if (draftingFigure != null)
+            if (draftingStrategies.ContainsKey(DrawFigure))
             {
-                var position = mouseEventData.GetPosition(positionReference);
-                //var position = mouseEventData.GetPosition(null);
-                var mouseRouteY = position.Y - startPosition.Y;
-                if (mouseRouteY > 0)
-                {
-                    draftingFigure.Height = mouseRouteY;
-                }
-                else
-                {
-                    var figureHeight = System.Math.Abs(mouseRouteY);
-                    draftingFigure.Height = figureHeight;
-                    Canvas.SetTop(draftingFigure, position.Y);
-                }
-
-                var mouseRouteX = position.X - startPosition.X;
-                if (mouseRouteX > 0)
-                {
-                    draftingFigure.Width = mouseRouteX;
-                }
-                else
-                {
-                    var figureWidth = System.Math.Abs(mouseRouteX);
-                    draftingFigure.Width = figureWidth;
-                    Canvas.SetLeft(draftingFigure, position.X);
-                }
+                draftingStrategies[DrawFigure].IsDrafting(mouseEventData);
             }
         }
     }

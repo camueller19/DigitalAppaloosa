@@ -11,5 +11,7 @@
     <RibbonGroup Header="Shapes">
         <RibbonButton Label="Draw Rectangle"
                       Command="{Binding DrawRectangleCommand}" />
+        <RibbonButton Label="Draw Circle"
+                      Command="{Binding DrawCircleCommand}" />
     </RibbonGroup>
 </RibbonTab>

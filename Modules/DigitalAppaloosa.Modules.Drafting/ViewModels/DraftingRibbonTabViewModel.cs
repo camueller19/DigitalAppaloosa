@@ -9,18 +9,24 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
 {
     public class DraftingRibbonTabViewModel : ViewModelBase
     {
-        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
         private readonly IEventAggregator eventAggregator;
+        private readonly ILogger logger = LogManager.GetCurrentClassLogger();
+        private ICommand drawCircleCommand;
+
+        private ICommand drawRectangleCommand;
 
         public DraftingRibbonTabViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
             drawRectangleCommand = new RelayCommand(DrawRectangleCommandExecuted);
+            drawCircleCommand = new RelayCommand(DrawCircleCommandExecuted);
         }
 
-        //DrawRectangleCommand
-        #region DrawRectangleCommand
-        private ICommand drawRectangleCommand;
+        public ICommand DrawCircleCommand
+        {
+            get { return drawCircleCommand; }
+            set { drawCircleCommand = value; }
+        }
 
         public ICommand DrawRectangleCommand
         {
@@ -28,14 +34,21 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
             set { drawRectangleCommand = value; }
         }
 
-        private void DrawRectangleCommandExecuted()
+        private void DrawCircleCommandExecuted()
         {
-            //throw new NotImplementedException();
-            logger.Info("DrawRectangleCommand clicked");
-            var foe = eventAggregator.GetEvent<FigureOperationEvent>();
-            foe.Publish(FigureOperation.Rectangle);
+            PublishFigureEvent(FigureOperation.Circle);
         }
 
-        #endregion
+        private void DrawRectangleCommandExecuted()
+        {
+            PublishFigureEvent(FigureOperation.Rectangle);
+        }
+
+        private void PublishFigureEvent(FigureOperation figure)
+        {
+            logger.Info(figure + " DrawCommand clicked");
+            var foe = eventAggregator.GetEvent<FigureOperationEvent>();
+            foe.Publish(figure);
+        }
     }
 }

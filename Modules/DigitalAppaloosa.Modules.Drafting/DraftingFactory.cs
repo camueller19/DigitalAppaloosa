@@ -21,6 +21,7 @@ namespace DigitalAppaloosa.Modules.Drafting
                 draftingHandler, dragDropHandler };
             draftingVM.MouseButtonEventHandlers = handlersCollection;
             DraftingController.Instance.RegisterViewModel(draftingVM);
+            DraftingController.Instance.RegisterDraftingHandler(draftingHandler);
             draftingView.DataContext = draftingVM;
 
             return draftingView;
