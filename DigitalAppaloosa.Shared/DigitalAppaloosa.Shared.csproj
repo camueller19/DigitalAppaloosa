@@ -78,6 +78,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\PointFunctions.cs" />
     <Compile Include="Logging\NLogLogger.cs" />
     <Compile Include="Prism\ModuleBase.cs" />
     <Compile Include="Prism\RibbonGroupRegionAdapter.cs" />

@@ -20,8 +20,8 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
             draftingFigure = new Rectangle()
             {
                 Fill = new SolidColorBrush(Colors.Green),
-                Height = 1,
-                Width = 1
+                //Height = 1,
+                //Width = 1
                 //Margin = new Thickness(50, 200, 10, 10)
             };
             PlaceDraftingFigure(mouseEventData);
@@ -37,28 +37,31 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
                 var position = mouseEventData.GetPosition(positionReference);
                 //var position = mouseEventData.GetPosition(null);
                 var mouseRouteY = position.Y - startPosition.Y;
+                double newFigureHeight;
                 if (mouseRouteY > 0)
                 {
-                    draftingFigure.Height = mouseRouteY;
+                    newFigureHeight = mouseRouteY;
                 }
                 else
                 {
-                    var figureHeight = Math.Abs(mouseRouteY);
-                    draftingFigure.Height = figureHeight;
+                    newFigureHeight = Math.Abs(mouseRouteY);
                     Canvas.SetTop(draftingFigure, position.Y);
                 }
 
                 var mouseRouteX = position.X - startPosition.X;
+                double newFigureWidth;
                 if (mouseRouteX > 0)
                 {
-                    draftingFigure.Width = mouseRouteX;
+                    newFigureWidth = mouseRouteX;
                 }
                 else
                 {
-                    var figureWidth = Math.Abs(mouseRouteX);
-                    draftingFigure.Width = figureWidth;
+                    newFigureWidth = Math.Abs(mouseRouteX);
                     Canvas.SetLeft(draftingFigure, position.X);
                 }
+
+                draftingFigure.Height = Math.Max(1, newFigureHeight);
+                draftingFigure.Width = Math.Max(1, newFigureWidth);
             }
         }
     }
