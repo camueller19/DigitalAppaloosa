@@ -13,6 +13,8 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
 
+        private Polyline debugPolyline;
+
         public DraftingCircleStrategy(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         : base(draftingViewModel, positionReference)
         {
@@ -34,6 +36,10 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
             logger.Info("Circle StartPosition: " + xPos.ToString() + ", " + yPos.ToString());
             Canvas.SetLeft(draftingFigure, xPos);
             Canvas.SetTop(draftingFigure, yPos);
+
+            debugPolyline = new Polyline() { Fill = new SolidColorBrush(Colors.OrangeRed) };
+            debugPolyline.Points.Add(startPosition);
+            draftingViewModel.Items.Add(debugPolyline);
         }
 
         public override void IsDrafting(IMouseButtonEventDataTransferObject mouseEventData)
@@ -42,25 +48,90 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
             {
                 var position = mouseEventData.GetPosition(positionReference);
                 var distance = startPosition.DistanceTo(position);
-                var mouseRouteY = position.Y - startPosition.Y;
-                if (mouseRouteY < 0)
-                {
-                    mouseRouteY = Math.Abs(mouseRouteY);
-                    Canvas.SetTop(draftingFigure, startPosition.Y - mouseRouteY);
-                }
+                var offset = CalculateOffset(distance);
 
-                var mouseRouteX = position.X - startPosition.X;
-                if (mouseRouteX < 0)
+                double newPositionY = double.NaN;
+                double debugPositionY = double.NaN;
+                if (position.Y < startPosition.Y)
                 {
-                    mouseRouteX = Math.Abs(mouseRouteX);
-                    Canvas.SetLeft(draftingFigure, startPosition.X - mouseRouteX);
+                    //double
+                    newPositionY = CalculatePosition(startPosition.Y, position.Y);
+                    debugPositionY = newPositionY;
                 }
+                else
+                {
+                    newPositionY = startPosition.Y;
+                    debugPositionY = position.Y;
+                }
+                newPositionY -= offset;
+                Canvas.SetTop(draftingFigure, newPositionY);
 
-                //var dimension = Math.Max(1, Math.Max(mouseRouteY, mouseRouteX));
+                double newPositionX = double.NaN;
+                double debugPositionX = double.NaN;
+                if (position.X < startPosition.X)
+                {
+                    //double
+                    newPositionX = CalculatePosition(startPosition.X, position.X);
+                    debugPositionX = newPositionX;
+                }
+                else
+                {
+                    newPositionX = startPosition.X;
+                    debugPositionX = position.X;
+                }
+                newPositionX -= offset;
+                Canvas.SetLeft(draftingFigure, newPositionX);
+
                 var dimension = Math.Max(1, distance);
                 draftingFigure.Height = dimension;
                 draftingFigure.Width = dimension;
+
+                var debugPoint = new Point(debugPositionX, debugPositionY);
+                debugPolyline.Points.Add(debugPoint);
+                logger.Debug($"Move to Position: {newPositionX}|{newPositionY}, offset: {offset}, distance: {distance}");
             }
+        }
+
+        private double CalculatePosition(double startValue, double currentValue)
+        {
+            //var yDistance = startPosition.Y - position.Y;
+            var newPosition = startValue - (startValue - currentValue); // /2
+            return newPosition;
+        }
+
+        private double CalculateOffset(double d)
+        {
+            var sqrt2 = Math.Sqrt(2);
+            var a = d / sqrt2;
+            var x = (a / sqrt2) - (a / 2);
+            return x; 
+
+            //return d - ((2 * d) / Math.Sqrt(2));
         }
     }
 }
+
+//var dimension = Math.Max(1, Math.Max(mouseRouteY, mouseRouteX));
+
+//private Point latestPosition;
+//latestPosition = startPosition;
+//var mouseRouteY = position.Y - latestPosition.Y;
+
+//if (mouseRouteY < 0)
+//{
+//    mouseRouteY = Math.Abs(mouseRouteY);
+//    newPositionY = startPosition.Y - mouseRouteY;
+//    Canvas.SetTop(draftingFigure, newPositionY);
+//    latestPosition.Y = newPositionY;
+
+//}
+
+//var mouseRouteX = position.X - latestPosition.X;
+
+//if (mouseRouteX < 0)
+//{
+//    mouseRouteX = Math.Abs(mouseRouteX);
+//    newPositionX = startPosition.X - mouseRouteX;
+//    Canvas.SetLeft(draftingFigure, newPositionX);
+//    latestPosition.X = newPositionX;
+//}
