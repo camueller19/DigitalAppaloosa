@@ -12,7 +12,6 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
     public class DraftingCircleStrategy : DraftingStrategyBase
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-
         private Polyline debugPolyline;
 
         public DraftingCircleStrategy(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
@@ -24,22 +23,18 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
         {
             draftingFigure = new Ellipse()
             {
-                //Width = 20,
-                //Height = 20,
-                Fill = new SolidColorBrush(Colors.DarkSlateBlue),
-                //HorizontalAlignment = HorizontalAlignment.Left,
-                //VerticalAlignment = VerticalAlignment.Top
+                Fill = new SolidColorBrush(Colors.DarkSlateBlue)
             };
             PlaceDraftingFigure(mouseEventData);
-            var xPos = startPosition.X; // - (draftingFigure.Width / 2);
-            var yPos = startPosition.Y; // - (draftingFigure.Height / 2);
+            var xPos = startPosition.X;
+            var yPos = startPosition.Y;
             logger.Info("Circle StartPosition: " + xPos.ToString() + ", " + yPos.ToString());
             Canvas.SetLeft(draftingFigure, xPos);
             Canvas.SetTop(draftingFigure, yPos);
 
-            debugPolyline = new Polyline() { Fill = new SolidColorBrush(Colors.OrangeRed) };
-            debugPolyline.Points.Add(startPosition);
-            draftingViewModel.Items.Add(debugPolyline);
+            //debugPolyline = new Polyline() { Fill = new SolidColorBrush(Colors.OrangeRed) };
+            //debugPolyline.Points.Add(startPosition);
+            //draftingViewModel.Items.Add(debugPolyline);
         }
 
         public override void IsDrafting(IMouseButtonEventDataTransferObject mouseEventData)
@@ -47,91 +42,21 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
             if (draftingFigure != null)
             {
                 var position = mouseEventData.GetPosition(positionReference);
-                var distance = startPosition.DistanceTo(position);
-                var offset = CalculateOffset(distance);
+                var radius = startPosition.DistanceTo(position);
+                var circleCenter = new Point();
+                circleCenter.X = startPosition.X - radius;
+                circleCenter.Y = startPosition.Y - radius;
 
-                double newPositionY = double.NaN;
-                double debugPositionY = double.NaN;
-                if (position.Y < startPosition.Y)
-                {
-                    //double
-                    newPositionY = CalculatePosition(startPosition.Y, position.Y);
-                    debugPositionY = newPositionY;
-                }
-                else
-                {
-                    newPositionY = startPosition.Y;
-                    debugPositionY = position.Y;
-                }
-                newPositionY -= offset;
-                Canvas.SetTop(draftingFigure, newPositionY);
+                Canvas.SetLeft(draftingFigure, circleCenter.X);
+                Canvas.SetTop(draftingFigure, circleCenter.Y);
 
-                double newPositionX = double.NaN;
-                double debugPositionX = double.NaN;
-                if (position.X < startPosition.X)
-                {
-                    //double
-                    newPositionX = CalculatePosition(startPosition.X, position.X);
-                    debugPositionX = newPositionX;
-                }
-                else
-                {
-                    newPositionX = startPosition.X;
-                    debugPositionX = position.X;
-                }
-                newPositionX -= offset;
-                Canvas.SetLeft(draftingFigure, newPositionX);
-
-                var dimension = Math.Max(1, distance);
+                var dimension = Math.Max(1, radius * 2);
                 draftingFigure.Height = dimension;
                 draftingFigure.Width = dimension;
 
-                var debugPoint = new Point(debugPositionX, debugPositionY);
-                debugPolyline.Points.Add(debugPoint);
-                logger.Debug($"Move to Position: {newPositionX}|{newPositionY}, offset: {offset}, distance: {distance}");
+                //debugPolyline.Points.Add(position);
+                //logger.Debug($"circleCenter: {circleCenter} | position: {position}");
             }
-        }
-
-        private double CalculatePosition(double startValue, double currentValue)
-        {
-            //var yDistance = startPosition.Y - position.Y;
-            var newPosition = startValue - (startValue - currentValue); // /2
-            return newPosition;
-        }
-
-        private double CalculateOffset(double d)
-        {
-            var sqrt2 = Math.Sqrt(2);
-            var a = d / sqrt2;
-            var x = (a / sqrt2) - (a / 2);
-            return x; 
-
-            //return d - ((2 * d) / Math.Sqrt(2));
         }
     }
 }
-
-//var dimension = Math.Max(1, Math.Max(mouseRouteY, mouseRouteX));
-
-//private Point latestPosition;
-//latestPosition = startPosition;
-//var mouseRouteY = position.Y - latestPosition.Y;
-
-//if (mouseRouteY < 0)
-//{
-//    mouseRouteY = Math.Abs(mouseRouteY);
-//    newPositionY = startPosition.Y - mouseRouteY;
-//    Canvas.SetTop(draftingFigure, newPositionY);
-//    latestPosition.Y = newPositionY;
-
-//}
-
-//var mouseRouteX = position.X - latestPosition.X;
-
-//if (mouseRouteX < 0)
-//{
-//    mouseRouteX = Math.Abs(mouseRouteX);
-//    newPositionX = startPosition.X - mouseRouteX;
-//    Canvas.SetLeft(draftingFigure, newPositionX);
-//    latestPosition.X = newPositionX;
-//}

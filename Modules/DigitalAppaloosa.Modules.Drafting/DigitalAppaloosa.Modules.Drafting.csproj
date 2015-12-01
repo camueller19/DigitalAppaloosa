@@ -101,6 +101,7 @@
     <Compile Include="Handlers\DraftingHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strategies\DraftingCircleStrategy.cs" />
+    <Compile Include="Strategies\DraftingLineStrategy.cs" />
     <Compile Include="Strategies\DraftingRectangleStrategy.cs" />
     <Compile Include="Strategies\DraftingStrategyBase.cs" />
     <Compile Include="ViewModels\DraftingRibbonTabViewModel.cs" />
