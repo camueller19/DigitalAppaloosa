@@ -1,4 +1,5 @@
-﻿using Prism.Events;
+﻿using DigitalAppaloosa.Contracts.Enums;
+using Prism.Events;
 
 namespace DigitalAppaloosa.Shared.PubSubEvents
 {
@@ -6,11 +7,4 @@ namespace DigitalAppaloosa.Shared.PubSubEvents
     {
     }
 
-    public enum FigureOperation
-    {
-        None,
-        Rectangle,
-        Circle
-        //TODO add more
-    }
 }

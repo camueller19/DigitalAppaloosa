@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using DigitalAppaloosa.Contracts.Enums;
 using DigitalAppaloosa.Shared.PubSubEvents;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.CommandWpf;
@@ -11,37 +12,25 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
     {
         private readonly IEventAggregator eventAggregator;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
-        private ICommand drawCircleCommand;
 
-        private ICommand drawRectangleCommand;
+        private ICommand drawCommand;
 
         public DraftingRibbonTabViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
-            drawRectangleCommand = new RelayCommand(DrawRectangleCommandExecuted);
-            drawCircleCommand = new RelayCommand(DrawCircleCommandExecuted);
+
+            DrawCommand = new RelayCommand<FigureOperation>(DrawCommandExecuted);
         }
 
-        public ICommand DrawCircleCommand
+        public ICommand DrawCommand
         {
-            get { return drawCircleCommand; }
-            set { drawCircleCommand = value; }
+            get { return drawCommand; }
+            set { drawCommand = value; }
         }
 
-        public ICommand DrawRectangleCommand
+        private void DrawCommandExecuted(FigureOperation operation)
         {
-            get { return drawRectangleCommand; }
-            set { drawRectangleCommand = value; }
-        }
-
-        private void DrawCircleCommandExecuted()
-        {
-            PublishFigureEvent(FigureOperation.Circle);
-        }
-
-        private void DrawRectangleCommandExecuted()
-        {
-            PublishFigureEvent(FigureOperation.Rectangle);
+            PublishFigureEvent(operation);
         }
 
         private void PublishFigureEvent(FigureOperation figure)

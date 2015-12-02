@@ -91,7 +91,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DigitalAppaloosa.Contracts\DigitalAppaloosa.Contracts.csproj">
+      <Project>{5d69fe2a-834c-427a-a190-358dc8fb203a}</Project>
+      <Name>DigitalAppaloosa.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

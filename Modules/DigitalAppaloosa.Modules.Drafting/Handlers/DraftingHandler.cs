@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
+using DigitalAppaloosa.Contracts.Enums;
 using DigitalAppaloosa.Contracts.Interfaces;
 using DigitalAppaloosa.Modules.Drafting.Strategies;
-using DigitalAppaloosa.Shared.PubSubEvents;
 using NLog;
 
 namespace DigitalAppaloosa.Modules.Drafting.Handlers
@@ -10,23 +10,19 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
     public class DraftingHandler : IMouseButtonEventHandler
     {
         private static Logger logger = LogManager.GetCurrentClassLogger();
-
-        //private IDraftingPaneViewModel draftingViewModel;
-        //private FrameworkElement positionReference;
         private Dictionary<FigureOperation, IDraftingStrategy> draftingStrategies;
-
-        public FigureOperation DrawFigure { get; set; }
 
         public DraftingHandler(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         {
-            //this.draftingViewModel = draftingViewModel;
-            //this.positionReference = positionReference;
             draftingStrategies = new Dictionary<FigureOperation, IDraftingStrategy>()
             {
-                { FigureOperation.Rectangle, new DraftingRectangleStrategy(draftingViewModel, positionReference) },
-                { FigureOperation.Circle, new DraftingCircleStrategy(draftingViewModel, positionReference) }
+                [FigureOperation.Rectangle] = new DraftingRectangleStrategy(draftingViewModel, positionReference),
+                [FigureOperation.Circle] = new DraftingCircleStrategy(draftingViewModel, positionReference),
+                [FigureOperation.Line] = new DraftingLineStrategy(draftingViewModel, positionReference)
             };
         }
+
+        public FigureOperation DrawFigure { get; set; }
 
         public void HandlePreviewMouseLeftButtonDownEvent(IMouseButtonEventDataTransferObject mouseEventData)
         {
@@ -53,14 +49,3 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
         }
     }
 }
-
-//internal void AddFigure(FigureOperation figureOperation)
-//{
-//    if (figureOperation == FigureOperation.Rectangle)
-//    {
-//        Canvas.SetLeft(newFigure, 10 * offset);
-//        Canvas.SetTop(newFigure, 10 * offset);
-//        offset++;
-//        Items.Add(newFigure);
-//    }
-//}

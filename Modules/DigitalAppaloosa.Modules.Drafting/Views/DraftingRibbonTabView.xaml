@@ -4,14 +4,20 @@
            xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
            xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
            xmlns:local="clr-namespace:DigitalAppaloosa.Modules.Drafting.Views"
+           xmlns:figureEnum="clr-namespace:DigitalAppaloosa.Contracts.Enums;assembly=DigitalAppaloosa.Contracts"
            mc:Ignorable="d"
            d:DesignHeight="300"
            d:DesignWidth="300"
            Header="Drafting Module">
     <RibbonGroup Header="Shapes">
         <RibbonButton Label="Draw Rectangle"
-                      Command="{Binding DrawRectangleCommand}" />
+                      Command="{Binding DrawCommand}"
+                      CommandParameter="{x:Static figureEnum:FigureOperation.Rectangle}" />
         <RibbonButton Label="Draw Circle"
-                      Command="{Binding DrawCircleCommand}" />
+                      Command="{Binding DrawCommand}"
+                      CommandParameter="{x:Static figureEnum:FigureOperation.Circle}" />
+        <RibbonButton Label="Draw Line"
+                      Command="{Binding DrawCommand}"
+                      CommandParameter="{x:Static figureEnum:FigureOperation.Line}" />
     </RibbonGroup>
 </RibbonTab>

@@ -17,15 +17,14 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
 
         public override void BeginDrafting(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            //Stroke = System.Windows.Media.Brushes.LightSteelBlue;
             //StrokeThickness = 2;
             draftingFigure = new Line()
             {
-                Fill = new SolidColorBrush(Colors.DarkBlue)
+                Stroke = new SolidColorBrush(Colors.DarkGreen)
             };
             PlaceDraftingFigure(mouseEventData);
 
-            logger.Info($"Circle StartPosition: {startPosition}");
+            logger.Info($"Line StartPosition: {startPosition}");
 
             var tmpLine = draftingFigure as Line;
             tmpLine.X1 = startPosition.X;

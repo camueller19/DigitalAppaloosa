@@ -1,6 +1,6 @@
+using DigitalAppaloosa.Contracts.Enums;
 using DigitalAppaloosa.Modules.Drafting.Handlers;
 using DigitalAppaloosa.Modules.Drafting.ViewModels;
-using DigitalAppaloosa.Shared.PubSubEvents;
 using NLog;
 
 namespace DigitalAppaloosa.Modules.Drafting
