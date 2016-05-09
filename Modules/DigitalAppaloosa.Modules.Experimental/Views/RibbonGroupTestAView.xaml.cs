@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls.Ribbon;
-
-namespace DigitalAppaloosa.Modules.Experimental.Views
+﻿namespace DigitalAppaloosa.Modules.Experimental.Views
 {
     /// <summary>
     /// Interaktionslogik für RibbonGroupTestAView.xaml
     /// </summary>
-    public partial class RibbonGroupTestAView : RibbonGroup
+    public partial class RibbonGroupTestAView
     {
         public RibbonGroupTestAView()
         {

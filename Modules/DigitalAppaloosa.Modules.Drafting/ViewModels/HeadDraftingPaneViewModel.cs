@@ -17,7 +17,7 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
 
         public HeadDraftingPaneViewModel()
         {
-            var rectangle1 = new Rectangle()
+            var rectangle1 = new Rectangle
             {
                 Fill = new SolidColorBrush(Colors.Blue),
                 Height = 20,
@@ -29,7 +29,7 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
             Canvas.SetTop(rectangle1, 10);
             Canvas.SetLeft(rectangle1, 10);
 
-            var ellipse1 = new Ellipse()
+            var ellipse1 = new Ellipse
             {
                 Width = 20,
                 Height = 20,
@@ -38,7 +38,7 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
             Canvas.SetTop(ellipse1, 25);
             Canvas.SetLeft(ellipse1, 25);
 
-            items = new ObservableCollection<FrameworkElement>() { rectangle1, ellipse1 };
+            items = new ObservableCollection<FrameworkElement> { rectangle1, ellipse1 };
         }
 
         public ICollection<FrameworkElement> Items

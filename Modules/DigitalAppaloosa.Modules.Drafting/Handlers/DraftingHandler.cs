@@ -9,12 +9,12 @@ namespace DigitalAppaloosa.Modules.Drafting.Handlers
 {
     public class DraftingHandler : IMouseButtonEventHandler
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
-        private Dictionary<FigureOperation, IDraftingStrategy> draftingStrategies;
+        static Logger logger = LogManager.GetCurrentClassLogger();
+        readonly Dictionary<FigureOperation, IDraftingStrategy> draftingStrategies;
 
         public DraftingHandler(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         {
-            draftingStrategies = new Dictionary<FigureOperation, IDraftingStrategy>()
+            draftingStrategies = new Dictionary<FigureOperation, IDraftingStrategy>
             {
                 [FigureOperation.Rectangle] = new DraftingRectangleStrategy(draftingViewModel, positionReference),
                 [FigureOperation.Circle] = new DraftingCircleStrategy(draftingViewModel, positionReference),

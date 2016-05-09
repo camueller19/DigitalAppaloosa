@@ -17,7 +17,7 @@ namespace DigitalAppaloosa.Modules.Drafting
 
             var draftingHandler = new DraftingHandler(draftingVM, draftingView);
             var dragDropHandler = new DragDropHandler();
-            var handlersCollection = new ObservableCollection<IMouseButtonEventHandler>() {
+            var handlersCollection = new ObservableCollection<IMouseButtonEventHandler> {
                 draftingHandler, dragDropHandler };
             draftingVM.MouseButtonEventHandlers = handlersCollection;
             DraftingController.Instance.RegisterViewModel(draftingVM);

@@ -1,8 +1,8 @@
-﻿using System.Windows.Controls.Ribbon;
-using DigitalAppaloosa.Contracts;
+﻿using DigitalAppaloosa.Contracts;
 using DigitalAppaloosa.Modules.Experimental.ViewModels;
 using DigitalAppaloosa.Modules.Experimental.Views;
 using DigitalAppaloosa.Shared.Prism;
+using Fluent;
 using Microsoft.Practices.Unity;
 using Prism.Events;
 using Prism.Regions;
@@ -40,11 +40,11 @@ namespace DigitalAppaloosa.Modules.Experimental
             ribbonGroupTestAView.DataContext = ribbonGroupTestAVM;
             newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestAView);
 
-            var ribbonGroupTestBView = new RibbonGroupTestBView();
-            var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
-
-            var ribbonButtonD = new RibbonButton() { Command = ExperimentalStaticCommands.ButtonDCommand, Label = "Button D" };
-            newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
+            //TODO
+            //var ribbonGroupTestBView = new RibbonGroupTestBView();
+            //var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
+            //var ribbonButtonD = new Button { Command = ExperimentalStaticCommands.ButtonDCommand, Header = "Button D" };
+            //newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
         }
     }
 }

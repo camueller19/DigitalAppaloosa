@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Windows.Controls.Ribbon;
-using NLog;
+using Fluent;
 using Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
-    public class RibbonTabRegionAdapter : RegionAdapterBase<RibbonTab>
+    public class RibbonTabRegionAdapter : RegionAdapterBase<RibbonTabItem>
     {
         //private static Logger logger = LogManager.GetCurrentClassLogger();
 
@@ -14,21 +13,21 @@ namespace DigitalAppaloosa.Shared.Prism
             : base(regionBehaviorFactory)
         { }
 
-        private RibbonTab ribbonRegionTarget;
+        RibbonTabItem ribbonRegionTarget;
 
-        protected override void Adapt(IRegion region, RibbonTab regionTarget)
+        protected override void Adapt(IRegion region, RibbonTabItem regionTarget)
         {
             ribbonRegionTarget = regionTarget;
 
-            region.ActiveViews.CollectionChanged += new NotifyCollectionChangedEventHandler(OnActiveViewsChanged);
+            region.ActiveViews.CollectionChanged += OnActiveViewsChanged;
 
-            foreach (RibbonGroup ribbonGroupView in region.ActiveViews)
+            foreach (RibbonGroupBox ribbonGroupView in region.ActiveViews)
             {
                 AddRibbonViewToRegion(ribbonGroupView);
             }
         }
 
-        private void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -49,12 +48,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void AddRibbonViewToRegion(object ribbonView)
+        void AddRibbonViewToRegion(object ribbonView)
         {
-            if (ribbonView is RibbonGroup)
+            var group = ribbonView as RibbonGroupBox;
+            if (group != null)
             {
-                ribbonRegionTarget.Items.Add(ribbonView);
-                //logger.Info("View added: " + ribbonView);
+                ribbonRegionTarget.Groups.Add(group);
             }
             else
             {
@@ -62,20 +61,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void RemoveRibbonViewFromRegion(object ribbonView)
+        void RemoveRibbonViewFromRegion(object ribbonView)
         {
-            //foreach (UIElement elementLoopVariable in e.OldItems)
-            //{
-            //    var element = elementLoopVariable;
-            //    if (regionTarget.Items.Contains(element))
-            //    {
-            //        regionTarget.Items.Remove(element);
-            //    }
-            //}
-
-            if (ribbonView is RibbonTab)
+            var group = ribbonView as RibbonGroupBox;
+            if (group != null)
             {
-                ribbonRegionTarget.Items.Remove(ribbonView);
+                ribbonRegionTarget.Groups.Remove(group);
             }
             else
             {

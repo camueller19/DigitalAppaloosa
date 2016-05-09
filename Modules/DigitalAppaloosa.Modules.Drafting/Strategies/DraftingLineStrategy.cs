@@ -8,7 +8,7 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
 {
     public class DraftingLineStrategy : DraftingStrategyBase
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        static Logger logger = LogManager.GetCurrentClassLogger();
 
         public DraftingLineStrategy(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         : base(draftingViewModel, positionReference)
@@ -18,7 +18,7 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
         public override void BeginDrafting(IMouseButtonEventDataTransferObject mouseEventData)
         {
             //StrokeThickness = 2;
-            draftingFigure = new Line()
+            draftingFigure = new Line
             {
                 Stroke = new SolidColorBrush(Colors.DarkGreen)
             };

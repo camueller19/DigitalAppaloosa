@@ -1,32 +1,32 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Windows.Controls.Ribbon;
+using Fluent;
 using Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
 {
-    public class RibbonGroupRegionAdapter : RegionAdapterBase<RibbonGroup>
+    public class RibbonGroupRegionAdapter : RegionAdapterBase<RibbonGroupBox>
     {
         public RibbonGroupRegionAdapter(IRegionBehaviorFactory regionBehaviorFactory)
             : base(regionBehaviorFactory)
         {
         }
 
-        private RibbonGroup ribbonRegionTarget;
+        RibbonGroupBox ribbonRegionTarget;
 
-        protected override void Adapt(IRegion region, RibbonGroup regionTarget)
+        protected override void Adapt(IRegion region, RibbonGroupBox regionTarget)
         {
             ribbonRegionTarget = regionTarget;
 
-            region.ActiveViews.CollectionChanged += new NotifyCollectionChangedEventHandler(OnActiveViewsChanged);
+            region.ActiveViews.CollectionChanged += OnActiveViewsChanged;
 
-            foreach (RibbonButton ribbonGroupView in region.ActiveViews)
+            foreach (Button ribbonGroupView in region.ActiveViews)
             {
                 AddRibbonViewToRegion(ribbonGroupView);
             }
         }
 
-        private void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -47,11 +47,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void AddRibbonViewToRegion(object ribbonView)
+        void AddRibbonViewToRegion(object ribbonView)
         {
-            if (ribbonView is RibbonButton)
+            var button = ribbonView as Button;
+            if (button != null)
             {
-                ribbonRegionTarget.Items.Add(ribbonView);
+                ribbonRegionTarget.Items.Add(button);
             }
             else
             {
@@ -59,20 +60,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void RemoveRibbonViewFromRegion(object ribbonView)
+        void RemoveRibbonViewFromRegion(object ribbonView)
         {
-            //foreach (UIElement elementLoopVariable in e.OldItems)
-            //{
-            //    var element = elementLoopVariable;
-            //    if (regionTarget.Items.Contains(element))
-            //    {
-            //        regionTarget.Items.Remove(element);
-            //    }
-            //}
-
-            if (ribbonView is RibbonButton)
+            var button = ribbonView as Button;
+            if (button != null)
             {
-                ribbonRegionTarget.Items.Remove(ribbonView);
+                ribbonRegionTarget.Items.Remove(button);
             }
             else
             {

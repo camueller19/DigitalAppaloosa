@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
-using System.Windows.Controls.Ribbon;
-using NLog;
+using Fluent;
 using Prism.Regions;
 
 namespace DigitalAppaloosa.Shared.Prism
@@ -14,21 +13,21 @@ namespace DigitalAppaloosa.Shared.Prism
             : base(regionBehaviorFactory)
         { }
 
-        private Ribbon ribbonRegionTarget;
+        Ribbon ribbonRegionTarget;
 
         protected override void Adapt(IRegion region, Ribbon regionTarget)
         {
             ribbonRegionTarget = regionTarget;
 
-            region.ActiveViews.CollectionChanged += new NotifyCollectionChangedEventHandler(OnActiveViewsChanged);
+            region.ActiveViews.CollectionChanged += OnActiveViewsChanged;
 
-            foreach (RibbonTab ribbonTabView in region.ActiveViews)
+            foreach (RibbonTabItem ribbonTabView in region.ActiveViews)
             {
                 AddRibbonViewToRegion(ribbonTabView);
             }
         }
 
-        private void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnActiveViewsChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -48,11 +47,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void AddRibbonViewToRegion(object ribbonView)
+        void AddRibbonViewToRegion(object ribbonView)
         {
-            if (ribbonView is RibbonTab)
+            var tab = ribbonView as RibbonTabItem;
+            if (tab != null)
             {
-                ribbonRegionTarget.Items.Add(ribbonView);
+                ribbonRegionTarget.Tabs.Add(tab);
                 //logger.Info("View added: " + ribbonView);
             }
             else
@@ -61,11 +61,12 @@ namespace DigitalAppaloosa.Shared.Prism
             }
         }
 
-        private void RemoveRibbonViewFromRegion(object ribbonView)
+        void RemoveRibbonViewFromRegion(object ribbonView)
         {
-            if (ribbonView is RibbonTab)
+            var tab = ribbonView as RibbonTabItem;
+            if (tab != null)
             {
-                ribbonRegionTarget.Items.Remove(ribbonView);
+                ribbonRegionTarget.Tabs.Remove(tab);
             }
             else
             {

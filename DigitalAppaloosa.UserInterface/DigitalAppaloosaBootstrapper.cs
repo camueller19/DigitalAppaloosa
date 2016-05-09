@@ -1,9 +1,9 @@
 ﻿using System.Windows;
-using System.Windows.Controls.Ribbon;
 using DigitalAppaloosa.Modules.Drafting;
 using DigitalAppaloosa.Modules.Experimental;
 using DigitalAppaloosa.Shared.Logging;
 using DigitalAppaloosa.Shared.Prism;
+using Fluent;
 using Microsoft.Practices.Unity;
 using NLog;
 using Prism.Logging;
@@ -37,10 +37,10 @@ namespace DigitalAppaloosa.UserInterface
             var experimentalModule = typeof(ExperimentalModule);
             var draftingModule = typeof(DraftingModule);
             ModuleCatalog.AddModule(
-                new ModuleInfo()
+                new ModuleInfo
                 {
                     ModuleName = experimentalModule.Name,
-                    ModuleType = experimentalModule.AssemblyQualifiedName,
+                    ModuleType = experimentalModule.AssemblyQualifiedName
                 });
             ModuleCatalog.AddModule(
                 new ModuleInfo
@@ -56,7 +56,7 @@ namespace DigitalAppaloosa.UserInterface
             if (regionAdapterMappings != null)
             {
                 regionAdapterMappings.RegisterMapping(typeof(Ribbon), Container.Resolve<RibbonRegionAdapter>());
-                regionAdapterMappings.RegisterMapping(typeof(RibbonTab), Container.Resolve<RibbonTabRegionAdapter>());
+                regionAdapterMappings.RegisterMapping(typeof(RibbonTabItem), Container.Resolve<RibbonTabRegionAdapter>());
             }
 
             //logger.Debug("Test Log");

@@ -11,8 +11,8 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
 {
     public class DraftingCircleStrategy : DraftingStrategyBase
     {
-        private static Logger logger = LogManager.GetCurrentClassLogger();
-        private Polyline debugPolyline;
+        static Logger logger = LogManager.GetCurrentClassLogger();
+        //Polyline debugPolyline;
 
         public DraftingCircleStrategy(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         : base(draftingViewModel, positionReference)
@@ -21,14 +21,14 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
 
         public override void BeginDrafting(IMouseButtonEventDataTransferObject mouseEventData)
         {
-            draftingFigure = new Ellipse()
+            draftingFigure = new Ellipse
             {
                 Fill = new SolidColorBrush(Colors.DarkSlateBlue)
             };
             PlaceDraftingFigure(mouseEventData);
             var xPos = startPosition.X;
             var yPos = startPosition.Y;
-            logger.Info("Circle StartPosition: " + xPos.ToString() + ", " + yPos.ToString());
+            logger.Info($"Circle StartPosition: {xPos}, {yPos}");
             Canvas.SetLeft(draftingFigure, xPos);
             Canvas.SetTop(draftingFigure, yPos);
 

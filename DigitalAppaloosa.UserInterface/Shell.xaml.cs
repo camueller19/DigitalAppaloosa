@@ -1,11 +1,9 @@
-﻿using System.Windows.Controls.Ribbon;
-
-namespace DigitalAppaloosa.UserInterface
+﻿namespace DigitalAppaloosa.UserInterface
 {
     /// <summary>
     /// Interaktionslogik für Shell.xaml
     /// </summary>
-    public partial class Shell : RibbonWindow
+    public partial class Shell
     {
         public Shell()
         {

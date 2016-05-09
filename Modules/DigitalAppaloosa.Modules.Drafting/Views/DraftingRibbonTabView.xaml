@@ -1,23 +1,24 @@
-﻿<RibbonTab x:Class="DigitalAppaloosa.Modules.Drafting.Views.DraftingRibbonTabView"
-           xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-           xmlns:local="clr-namespace:DigitalAppaloosa.Modules.Drafting.Views"
-           xmlns:figureEnum="clr-namespace:DigitalAppaloosa.Contracts.Enums;assembly=DigitalAppaloosa.Contracts"
-           mc:Ignorable="d"
-           d:DesignHeight="300"
-           d:DesignWidth="300"
-           Header="Drafting Module">
-    <RibbonGroup Header="Shapes">
-        <RibbonButton Label="Draw Rectangle"
-                      Command="{Binding DrawCommand}"
-                      CommandParameter="{x:Static figureEnum:FigureOperation.Rectangle}" />
-        <RibbonButton Label="Draw Circle"
-                      Command="{Binding DrawCommand}"
-                      CommandParameter="{x:Static figureEnum:FigureOperation.Circle}" />
-        <RibbonButton Label="Draw Line"
-                      Command="{Binding DrawCommand}"
-                      CommandParameter="{x:Static figureEnum:FigureOperation.Line}" />
-    </RibbonGroup>
-</RibbonTab>
+﻿<Fluent:RibbonTabItem x:Class="DigitalAppaloosa.Modules.Drafting.Views.DraftingRibbonTabView"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:Fluent="clr-namespace:Fluent;assembly=Fluent"
+                      xmlns:local="clr-namespace:DigitalAppaloosa.Modules.Drafting.Views"
+                      xmlns:figureEnum="clr-namespace:DigitalAppaloosa.Contracts.Enums;assembly=DigitalAppaloosa.Contracts"
+                      mc:Ignorable="d"
+                      d:DesignHeight="300"
+                      d:DesignWidth="300"
+                      Header="Drafting Module">
+    <Fluent:RibbonGroupBox Header="Shapes">
+        <Fluent:Button Header="Draw Rectangle"
+                       Command="{Binding DrawCommand}"
+                       CommandParameter="{x:Static figureEnum:FigureOperation.Rectangle}" />
+        <Fluent:Button Header="Draw Circle"
+                       Command="{Binding DrawCommand}"
+                       CommandParameter="{x:Static figureEnum:FigureOperation.Circle}" />
+        <Fluent:Button Header="Draw Line"
+                       Command="{Binding DrawCommand}"
+                       CommandParameter="{x:Static figureEnum:FigureOperation.Line}" />
+    </Fluent:RibbonGroupBox>
+</Fluent:RibbonTabItem>

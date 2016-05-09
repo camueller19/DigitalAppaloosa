@@ -17,9 +17,9 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
         public override void BeginDrafting(IMouseButtonEventDataTransferObject mouseEventData)
         {
             //logger.Info(nameof(DraftingHandler));
-            draftingFigure = new Rectangle()
+            draftingFigure = new Rectangle
             {
-                Fill = new SolidColorBrush(Colors.Green),
+                Fill = new SolidColorBrush(Colors.Green)
                 //Height = 1,
                 //Width = 1
                 //Margin = new Thickness(50, 200, 10, 10)

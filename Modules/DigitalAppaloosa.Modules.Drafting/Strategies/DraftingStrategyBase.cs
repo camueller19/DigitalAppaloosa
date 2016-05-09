@@ -20,7 +20,7 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
         protected IDraftingPaneViewModel draftingViewModel;
         protected FrameworkElement positionReference;
         protected Point startPosition;
-        private static Logger logger = LogManager.GetCurrentClassLogger();
+        static readonly Logger logger = LogManager.GetCurrentClassLogger();
 
         protected DraftingStrategyBase(IDraftingPaneViewModel draftingViewModel, FrameworkElement positionReference)
         {
@@ -42,7 +42,7 @@ namespace DigitalAppaloosa.Modules.Drafting.Strategies
             draftingViewModel.Items.Add(draftingFigure);
             var startPositionLog = mouseEventData.GetPosition(null);
             startPosition = mouseEventData.GetPosition(positionReference);
-            logger.Info("StartPosition: " + startPosition.ToString() + "|" + startPositionLog.ToString());
+            logger.Info($"StartPosition: {startPosition}|{startPositionLog}");
         }
     }
 }
