@@ -14,15 +14,19 @@ namespace DigitalAppaloosa.Modules.Drafting
         {
             var draftingView = new HeadDraftingPaneView();
             var draftingVM = new HeadDraftingPaneViewModel();
+            draftingView.DataContext = draftingVM;
 
             var draftingHandler = new DraftingHandler(draftingVM, draftingView);
             var dragDropHandler = new DragDropHandler();
             var handlersCollection = new ObservableCollection<IMouseButtonEventHandler> {
                 draftingHandler, dragDropHandler };
             draftingVM.MouseButtonEventHandlers = handlersCollection;
+
             DraftingController.Instance.RegisterViewModel(draftingVM);
             DraftingController.Instance.RegisterDraftingHandler(draftingHandler);
-            draftingView.DataContext = draftingVM;
+
+            var sph = new ShowPathHandler(draftingVM);
+            DraftingController.Instance.RegisterShowPathHandler(sph);
 
             return draftingView;
         }

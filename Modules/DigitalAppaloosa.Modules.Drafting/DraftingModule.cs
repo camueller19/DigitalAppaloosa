@@ -19,6 +19,7 @@ namespace DigitalAppaloosa.Modules.Drafting
         public override void RegisterEvents()
         {
             eventAggregator.GetEvent<FigureOperationEvent>().Subscribe(DraftingController.FigureOperationEventTest);
+            eventAggregator.GetEvent<ShowPathEvent>().Subscribe(DraftingController.ShowPathEventTest);
         }
 
         public override void RegisterViews()

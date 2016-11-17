@@ -40,11 +40,10 @@ namespace DigitalAppaloosa.Modules.Experimental
             ribbonGroupTestAView.DataContext = ribbonGroupTestAVM;
             newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestAView);
 
-            //TODO
-            //var ribbonGroupTestBView = new RibbonGroupTestBView();
-            //var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
-            //var ribbonButtonD = new Button { Command = ExperimentalStaticCommands.ButtonDCommand, Header = "Button D" };
-            //newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
+            var ribbonGroupTestBView = new RibbonGroupTestBView();
+            var newRibbonGroupRegionManager = newRibbonRegionManager.AddToRegion(RegionNames.RibbonTabRegion, ribbonGroupTestBView);
+            var ribbonButtonD = new Button { Command = ExperimentalStaticCommands.ButtonDCommand, Header = "Button D" };
+            newRibbonGroupRegionManager.AddToRegion(RegionNames.RibbonGroupRegion, ribbonButtonD);
         }
     }
 }

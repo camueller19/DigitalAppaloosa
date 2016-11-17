@@ -24,10 +24,18 @@ namespace DigitalAppaloosa.Modules.Drafting
 
         public HeadDraftingPaneViewModel HeadDraftingPaneViewModel { get; private set; }
 
+        public ShowPathHandler ShowPathHandler { get; set; }
+
         public static void FigureOperationEventTest(FigureOperation figureOperation)
         {
             logger.Info("FigureOperationEvent with Payload: " + figureOperation);
             Instance.DraftingHandler.DrawFigure = figureOperation;
+        }
+
+        internal static void ShowPathEventTest(int obj)
+        {
+            logger.Info("ShowPathEvent with Payload: " + obj);
+            Instance.ShowPathHandler.Handle();
         }
 
         internal void RegisterDraftingHandler(DraftingHandler draftingHandler)
@@ -35,7 +43,12 @@ namespace DigitalAppaloosa.Modules.Drafting
             DraftingHandler = draftingHandler;
         }
 
-        public void RegisterViewModel(HeadDraftingPaneViewModel headDraftingPaneViewModel)
+        internal void RegisterShowPathHandler(ShowPathHandler showPathHandler)
+        {
+            ShowPathHandler = showPathHandler;
+        }
+
+        internal void RegisterViewModel(HeadDraftingPaneViewModel headDraftingPaneViewModel)
         {
             HeadDraftingPaneViewModel = headDraftingPaneViewModel;
         }

@@ -21,4 +21,8 @@
                        Command="{Binding DrawCommand}"
                        CommandParameter="{x:Static figureEnum:FigureOperation.Line}" />
     </Fluent:RibbonGroupBox>
+    <Fluent:RibbonGroupBox Header="Path">
+        <Fluent:Button Header="ShowPath"
+                       Command="{Binding ShowPathCommand}" />
+    </Fluent:RibbonGroupBox>
 </Fluent:RibbonTabItem>

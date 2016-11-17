@@ -13,24 +13,27 @@ namespace DigitalAppaloosa.Modules.Drafting.ViewModels
         private readonly IEventAggregator eventAggregator;
         private readonly ILogger logger = LogManager.GetCurrentClassLogger();
 
-        private ICommand drawCommand;
-
         public DraftingRibbonTabViewModel(IEventAggregator eventAggregator)
         {
             this.eventAggregator = eventAggregator;
 
-            DrawCommand = new RelayCommand<FigureOperation>(DrawCommandExecuted);
+            DrawCommand = new RelayCommand<FigureOperation>(OnDrawCommandExecuted);
+            ShowPathCommand = new RelayCommand(OnShowPathCommandExecuted);
         }
 
-        public ICommand DrawCommand
-        {
-            get { return drawCommand; }
-            set { drawCommand = value; }
-        }
+        public ICommand DrawCommand { get; set; }
 
-        private void DrawCommandExecuted(FigureOperation operation)
+        public ICommand ShowPathCommand { get; set; }
+
+        private void OnDrawCommandExecuted(FigureOperation operation)
         {
             PublishFigureEvent(operation);
+        }
+
+        private void OnShowPathCommandExecuted()
+        {
+            var spe = eventAggregator.GetEvent<ShowPathEvent>();
+            spe.Publish(int.MaxValue);
         }
 
         private void PublishFigureEvent(FigureOperation figure)
